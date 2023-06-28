@@ -1,7 +1,4 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
 </script>
 
 <main>
@@ -12,8 +9,7 @@
 
 <style>
   .fancyParagraph {
-    color: mediumaquamarine;
+    color: rgb(95, 205, 190);
     font-size: 2rem;
-    text-decoration: wavy;
   }
 </style>
