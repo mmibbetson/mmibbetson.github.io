@@ -10,10 +10,16 @@
 </header>
 
 <p id="summary">
-Hello! My name is Matthew and I am a passionate software engineer. I have experience
-building web applications using modern technologies such as React and Express with TypeScript.
-I am also deeply interested in the FOSS movement, and am actively working on a GPL3 licensed
-project that I look forward to sharing with the world, using Go and the Charm toolchain.
+  Hello! My name is Matthew and I am a passionate software engineer. I have experience
+  building web applications using modern technologies such as React and Express with TypeScript.
+  I am also deeply interested in the FOSS movement, and am actively working on a GPL3 licensed
+  project that I look forward to sharing with the world, using Go and the Charm toolchain.
+</p>
+<br/>
+<p>
+  Outside of software, I am a composer and producer of ambient, glitch, and experimental music.
+  I have extended my sound design skills to the world of game development, and have worked on
+  multiple game jam projects, as well as an independent Sci-fi animation project.
 </p>
 
 <footer>
