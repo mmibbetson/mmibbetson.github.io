@@ -1,13 +1,12 @@
 :root {
-  box-sizing: border-box; // TODO: Check syntax
+  box-sizing: border-box; /* TODO: Check syntax */
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; // TODO: Change this
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* TODO: Change this */
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87); // TODO: Change this
-  background-color: #242424; // TODO: Change this
+  color: #1d1615; /* Bitter black */
+  background-color: #f2f0eb; /* Chestnut white */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,17 +17,16 @@
 
 a {
   font-weight: 500;
-  color: #646cff; // TODO: Change this
+  color: #646cff; /* TODO: Change this */
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2; // TODO: Change this
+  color: #535bf2; /* TODO: Change this */
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -43,13 +41,11 @@ h1 {
 }
 
 #app {
-  max-width: 1280px; // TODO: Look into this
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
   text-align: center;
 }
 
-// TODO: Look into how this is done, edit, and use for other elements
+/* TODO: Look into how this is done, edit, and use for other elements */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -69,16 +65,9 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-// TODO: Check on media queries, how to do themes this way, etc
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+p {
+  font-size: 1.2em;
+  max-width: 60em;
+
+  margin: auto;
 }
