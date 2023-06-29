@@ -5,8 +5,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: #1d1615; /* Bitter black */
-  background-color: #f2f0eb; /* Chestnut white */
+  color: #484547; /* Bitter black */
+  background-color: #f8f9fa; /* Chestnut white */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,7 +32,8 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
+  font-weight: 700;
   line-height: 1.1;
 }
 
