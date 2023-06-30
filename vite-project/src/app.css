@@ -17,11 +17,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff; /* TODO: Change this */
-  text-decoration: inherit;
+  color: #484547; /* TODO: Change this */
+  text-decoration: none;
 }
 a:hover {
-  color: #535bf2; /* TODO: Change this */
+  color: #484547; /* TODO: Make a subtle change */
 }
 
 body {
@@ -34,12 +34,16 @@ body {
 h1 {
   font-size: 2em;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
   text-align: left;
 
   margin: 0;
-  margin-bottom: 0.5em;
-  padding: 0.2em;
+}
+
+header {
+  border-bottom: solid;
+  border-color: #484547;
+  padding: 0.25em;
 }
 
 .card {
@@ -59,21 +63,25 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f8f9fa;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #484547;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+li {
+  margin: 0.5em;
+}
+
 p {
   font-size: 1.2em;
-  max-width: 60em;
+  max-width: 50em;
 
   margin: auto;
 }
