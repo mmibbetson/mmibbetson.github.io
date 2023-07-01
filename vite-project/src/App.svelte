@@ -1,4 +1,6 @@
 <script lang="ts">
+  import CollapseDisplay from "./lib/Collapse-Display.svelte";
+
 </script>
 
 <header>
@@ -9,20 +11,26 @@
   </h1>
 </header>
 
-<img src="../profile.webp" alt="My profile picture" id="profile-image"/>
+<div style="display: flex;">
+  <img src="../profile.webp" alt="My profile picture" id="profile-image"/>
 
-<p id="summary">
-  Hello! My name is Matthew and I am a passionate software engineer. I have experience
-  building web applications using modern technologies such as React and Express with TypeScript.
-  I am also deeply interested in the future of web technologies and am actively learning and developing
-  with Rust.
-</p>
-<br/>
-<p>
-  Outside of software, I also compose and produce ambient, glitch, and experimental music.
-  I have extended my sound design skills to the world of game development, and have worked on
-  multiple game jam projects, as well as an independent Sci-fi animation project.
-</p>
+  <div style="margin: auto;">
+    <p class="summary">
+      Hello! My name is Matthew and I am a passionate software engineer. I have experience
+      building web applications using modern technologies such as React and Express with TypeScript.
+      I am also deeply interested in the future of web technologies and am actively learning and developing
+      with Rust.
+    </p>
+    <br/><br/>
+    <p class="summary">
+      Outside of software, I also compose and produce ambient, glitch, and experimental music.
+      I have extended my sound design skills to the world of game development, and have worked on
+      multiple game jam projects, as well as an independent Sci-fi animation project.
+    </p>
+  </div>
+</div>
+
+<CollapseDisplay/>
 
 <footer>
   <h2>Get In Touch:</h2>
@@ -85,8 +93,14 @@
   }
 
   #profile-image {
+    display: inline-flex;
     padding: 0.5em;
     width: 20em;
+  }
+
+  .summary {
+    display: inline-flex;
+    margin: auto;
   }
 
   @keyframes blink {
