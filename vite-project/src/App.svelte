@@ -1,18 +1,22 @@
 <script lang="ts">
-  import CollapseDisplay from "./lib/Collapse-Display.svelte";
+  import BurgerBottom from "./lib/BurgerBottom.svelte";
+  import BurgerMiddle from "./lib/BurgerMiddle.svelte";
+  import BurgerTop from "./lib/BurgerTop.svelte";
 
 </script>
 
-<header>
+<header class="drop-shadow">
   <h1 id="title">Matthew Mark Ibbetson ›
     <span class="text-green">Software Engineer,</span>
-    <span class="text-purple">Musician,</span>
+    <span class="text-purple">Sound Designer,</span>
     <span class="text-pink">Creator.<span class="blinker">&nbsp;│</span></span>
   </h1>
 </header>
 
-<div style="display: flex;">
-  <img src="../profile.webp" alt="My profile picture" id="profile-image"/>
+<div style="display: flex; border: solid 0.33em; border-radius: 2% 10%; border-color: #48454744; width: 90vw; margin: auto; margin-top: 2em;">
+  <div class="circular-image">
+    <img src="../profile.webp" alt="My profile picture" id="profile-image"/>
+  </div>
 
   <div style="margin: auto;">
     <p class="summary">
@@ -30,7 +34,9 @@
   </div>
 </div>
 
-<CollapseDisplay/>
+<BurgerTop/>
+<BurgerMiddle/>
+<BurgerBottom/>
 
 <footer>
   <h2>Get In Touch:</h2>
@@ -101,6 +107,29 @@
   .summary {
     display: inline-flex;
     margin: auto;
+  }
+
+  .circular-image {
+    width: 18em;
+    height: 18em;
+    border-radius: 50%;
+    overflow: hidden;
+
+    margin: 2em;
+  }
+
+  .circular-image img {
+    position:relative;
+    top: -20%;
+    left: -5%;
+
+    width: 100%;
+    height: auto;
+  }
+
+
+  .drop-shadow {
+    box-shadow: 0 2px 4px #48454744;
   }
 
   @keyframes blink {
