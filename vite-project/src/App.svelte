@@ -5,7 +5,7 @@
 
 </script>
 
-<header class="drop-shadow">
+<header class="drop-shadow sticky">
   <h1 id="title">Matthew Mark Ibbetson ›
     <span class="text-green">Software Engineer,</span>
     <span class="text-purple">Sound Designer,</span>
@@ -13,7 +13,7 @@
   </h1>
 </header>
 
-<div style="display: flex; border: solid 0.33em; border-radius: 2% 10%; border-color: #48454744; width: 90vw; margin: auto; margin-top: 2em;">
+<div style="display: flex; border: dashed 0.33em; border-color: #48454744; width: 90vw; margin: auto; margin-top: 2em;">
   <div class="circular-image">
     <img src="../profile.webp" alt="My profile picture" id="profile-image"/>
   </div>
@@ -34,35 +34,29 @@
   </div>
 </div>
 
-<BurgerTop/>
-<BurgerMiddle/>
-<BurgerBottom/>
+<div style="display: flex; flex-direction: column; align-items: left; margin-top: 2em;">
+  <BurgerTop/>
+  <BurgerMiddle/>
+  <BurgerBottom/>
+</div>
 
-<footer>
+<footer style="display: flex; flex-direction: column; align-items: center;">
   <h2>Get In Touch:</h2>
-  <ul>
-    <li>
-      <button class="bg-green">
+      <button class="bg-green" style="position: relative; left: -4em;">
         <a href="mailto:mmibbetson@gmail.com" target="_blank">
           Email
         </a>
       </button>
-    </li>
-      <li>
       <button class="bg-purple">
         <a href="https://github.com/mmibbetson" target="_blank">
           GitHub
         </a>
       </button>
-    </li>
-      <li>
-      <button class="bg-pink">
+      <button class="bg-pink" style="position: relative; left: 4em;">
         <a href="https://www.linkedin.com/in/matthew-ibbetson-42b55b260" target="_blank">
           LinkedIn
         </a>
       </button>
-    </li>
-  </ul>
 </footer>
 
 <style>
@@ -70,28 +64,36 @@
     width: 100vw;
   }
 
+  .sticky {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+
+    z-index: 1;
+  }
+
   .bg-green {
-    background-color: #8ed6a6;
+    background-color: #99cc99;
   }
 
   .bg-purple {
-    background-color: #A68ED6;
+    background-color: #9999cc;
   }
 
   .bg-pink {
-    background-color: #D6A68E;
+    background-color: #cc9999;
   }
 
   .text-green {
-    color: #8ed6a6;
+    color: #99cc99;
   }
 
   .text-purple {
-    color: #A68ED6;
+    color: #9999cc;
   }
 
   .text-pink {
-    color: #D6A68E;
+    color: #cc9999;
   }
 
   .blinker {
