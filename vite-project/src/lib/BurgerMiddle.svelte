@@ -2,14 +2,16 @@
 
 </script>
 
-<div class="skills-container">
+<div class="microcosmos-container">
     <div class="dashbox">
         <h2>Microcosmos</h2>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae nulla, nemo architecto numquam eaque provident officia illum cumque, veniam corrupti vero et. Obcaecati ipsa dolore molestiae veniam temporibus ab! Quidem.</p>
     </div>
 </div>
 
 <style>
-    .skills-container {
+    .microcosmos-container {
         position: relative;
         align-self: flex-end;
         left: -5vw;
