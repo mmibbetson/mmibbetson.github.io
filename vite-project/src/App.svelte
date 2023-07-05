@@ -1,7 +1,7 @@
 <script lang="ts">
-  import BurgerBottom from "./lib/BurgerBottom.svelte";
-  import BurgerMiddle from "./lib/BurgerMiddle.svelte";
-  import BurgerTop from "./lib/BurgerTop.svelte";
+  import Skills from "./lib/Skills.svelte";
+  import Microcosmos from "./lib/Microcosmos.svelte";
+  import TinySteps from "./lib/TinySteps.svelte";
 
 </script>
 
@@ -15,7 +15,7 @@
 
 <div style="display: flex; border: dashed 0.33em; border-color: #48454744; width: 90vw; margin: auto; margin-top: 2em;">
   <div class="circular-image">
-    <img src="../profile.webp" alt="My profile picture" id="profile-image"/>
+    <img src="../profile.webp" alt="My face" id="profile-image"/>
   </div>
 
   <div style="margin: auto;">
@@ -35,33 +35,43 @@
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: left; margin-top: 2em;">
-  <BurgerTop/>
-  <BurgerMiddle/>
-  <BurgerBottom/>
+  <Skills/>
+  <Microcosmos/>
+  <TinySteps/>
 </div>
 
-<footer style="display: flex; flex-direction: column; align-items: center;">
+<footer>
   <h2>Get In Touch:</h2>
-      <button class="bg-green" style="position: relative; left: -4em;">
-        <a href="mailto:mmibbetson@gmail.com" target="_blank">
-          Email
-        </a>
-      </button>
-      <button class="bg-purple">
-        <a href="https://github.com/mmibbetson" target="_blank">
-          GitHub
-        </a>
-      </button>
-      <button class="bg-pink" style="position: relative; left: 4em;">
-        <a href="https://www.linkedin.com/in/matthew-ibbetson-42b55b260" target="_blank">
-          LinkedIn
-        </a>
-      </button>
+
+    <a href="mailto:mmibbetson@gmail.com" target="_blank" class="bg-green barlink greenlink">
+        <i class="fa-solid fa-envelope"/>
+        <span style="margin-left: 0.2em;">Email</span>
+    </a>
+    <a href="https://github.com/mmibbetson" target="_blank" class="bg-purple barlink purplink">
+      <i class="fa-brands fa-github"/>
+      <span style="margin-left: 0.2em;">GitHub</span>
+    </a>
+    <a href="https://www.linkedin.com/in/matthew-ibbetson-42b55b260" target="_blank" class="bg-pink barlink pinklink">
+      <i class="fa-brands fa-linkedin-in"/>
+      <span style="margin-left: 0.2em;">LinkedIn</span>
+    </a>
 </footer>
 
 <style>
   #title {
     width: 100vw;
+  }
+
+  .barlink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 4em;
+
+    font-size: 1.5rem;
   }
 
   .sticky {
@@ -76,12 +86,24 @@
     background-color: #99cc99;
   }
 
+  .greenlink:hover {
+    background-color: #88bb88;
+  }
+
   .bg-purple {
     background-color: #9999cc;
   }
 
+  .purplink:hover {
+    background-color: #8888bb;
+  }
+
   .bg-pink {
     background-color: #cc9999;
+  }
+
+  .pinklink:hover {
+    background-color: #bb8888;
   }
 
   .text-green {
@@ -128,7 +150,6 @@
     width: 100%;
     height: auto;
   }
-
 
   .drop-shadow {
     box-shadow: 0 2px 4px #48454744;

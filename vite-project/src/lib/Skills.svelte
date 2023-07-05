@@ -1,14 +1,4 @@
 <script lang="ts">
-    function addShaker(event: MouseEvent) {
-        const target = event.target as HTMLDivElement;
-
-        console.log("AAAAH")
-
-        target.classList.add("shaker");
-        setTimeout(() => {
-            target.classList.remove("shaker");
-        }, 1000);
-    }
 </script>
 
 <div class="skills-container">
@@ -17,7 +7,7 @@
     </div>
 
     <div style="display: flex; flex-direction: row; margin-top: 2em;">
-        <div class="bg-red skill-bubble" on:mouseover={addShaker}>
+        <div class="bg-red skill-bubble">
             <h3>TypeScript</h3>
         </div>
         <div class="bg-orange skill-bubble">
@@ -75,10 +65,12 @@
     }
 
     .skill-bubble:hover {
-        cursor: pointer;
+        cursor: default;
 
-        transform: scale(1.2);
-        transition: transform 0.2s ease-in-out;
+        transform: scale(1.2) rotate(3deg);
+        transition: transform 0.1s ease-out;
+
+        box-shadow: 0 2px 4px #48454744;
     }
 
     .shaker {
