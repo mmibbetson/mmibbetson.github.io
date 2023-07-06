@@ -4,7 +4,11 @@
 
 <div class="tinysteps-container">
     <div class="dashbox">
-        <h2 class="text-red">Tiny Steps</h2>
+        <a href="https://github.com/mmibbetson/tinysteps" target="_blank">
+            <h2 class="text-red">
+                Tiny Steps
+            </h2>
+        </a>
 
         <p class="description">
             A RESTful API service built for musicians and non-musicians as a utility to quickly and

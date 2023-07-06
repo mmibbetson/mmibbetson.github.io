@@ -4,7 +4,11 @@
 
 <div class="microcosmos-container">
     <div class="dashbox">
-        <h2 class="text-purple">Microcosmos</h2>
+        <a href="https://microcosmos.live" target="_blank">
+            <h2 class="text-purple">
+                Microcosmos
+            </h2>
+        </a>
 
         <p class="description">
             A web application built with TypeScript, React, .NET and AWS Lambda, Microcosmos is a tool for players

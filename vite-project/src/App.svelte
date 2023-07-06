@@ -43,15 +43,15 @@
 <footer>
   <h2>Get In Touch:</h2>
 
-    <a href="mailto:mmibbetson@gmail.com" target="_blank" class="bg-green barlink greenlink">
+    <a href="mailto:mmibbetson@gmail.com" target="_blank" class="bg-green barlink">
         <i class="fa-solid fa-envelope"/>
         <span style="margin-left: 0.2em;">Email</span>
     </a>
-    <a href="https://github.com/mmibbetson" target="_blank" class="bg-purple barlink purplink">
+    <a href="https://github.com/mmibbetson" target="_blank" class="bg-purple barlink">
       <i class="fa-brands fa-github"/>
       <span style="margin-left: 0.2em;">GitHub</span>
     </a>
-    <a href="https://www.linkedin.com/in/matthew-ibbetson-42b55b260" target="_blank" class="bg-pink barlink pinklink">
+    <a href="https://www.linkedin.com/in/matthew-ibbetson-42b55b260" target="_blank" class="bg-pink barlink">
       <i class="fa-brands fa-linkedin-in"/>
       <span style="margin-left: 0.2em;">LinkedIn</span>
     </a>
@@ -86,24 +86,12 @@
     background-color: #99cc99;
   }
 
-  .greenlink:hover {
-    background-color: #88bb88;
-  }
-
   .bg-purple {
     background-color: #9999cc;
   }
 
-  .purplink:hover {
-    background-color: #8888bb;
-  }
-
   .bg-pink {
     background-color: #cc9999;
-  }
-
-  .pinklink:hover {
-    background-color: #bb8888;
   }
 
   .text-green {
