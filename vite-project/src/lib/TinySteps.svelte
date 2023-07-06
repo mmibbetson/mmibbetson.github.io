@@ -23,15 +23,26 @@
             rate-limited and robustly designed.
         </p>
     </div>
+
+    <div class="image-container">
+        <img src="api_example.webp" alt="Tiny Steps" style="width: 50em;"/>
+        <img src="code_example.webp" alt="code example" style="width: 50em;"/>
+    </div>
 </div>
 
 <style>
     .tinysteps-container {
+        display: flex;
+        flex-direction: row;
+
         position: relative;
         left: 5vw;
         margin-bottom: 2em;
 
         width: 95vw;
+    }
+
+    .image-container {
     }
 
     .dashbox {

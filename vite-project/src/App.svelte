@@ -43,17 +43,23 @@
 <footer>
   <h2>Get In Touch:</h2>
 
-    <a href="mailto:mmibbetson@gmail.com" target="_blank" class="bg-green barlink">
-        <i class="fa-solid fa-envelope"/>
-        <span style="margin-left: 0.2em;">Email</span>
+    <a href="mailto:mmibbetson@gmail.com" target="_blank" class="bg-green barlink wobbler">
+        <div>
+          <i class="fa-solid fa-envelope"/>
+          <span style="margin-left: 0.2em;">Email</span>
+        </div>
     </a>
-    <a href="https://github.com/mmibbetson" target="_blank" class="bg-purple barlink">
-      <i class="fa-brands fa-github"/>
-      <span style="margin-left: 0.2em;">GitHub</span>
+    <a href="https://github.com/mmibbetson" target="_blank" class="bg-purple barlink wobbler">
+      <div>
+        <i class="fa-brands fa-github"/>
+        <span style="margin-left: 0.2em;">GitHub</span>
+      </div>
     </a>
-    <a href="https://www.linkedin.com/in/matthew-ibbetson-42b55b260" target="_blank" class="bg-pink barlink">
-      <i class="fa-brands fa-linkedin-in"/>
-      <span style="margin-left: 0.2em;">LinkedIn</span>
+    <a href="https://www.linkedin.com/in/matthew-ibbetson-42b55b260" target="_blank" class="bg-pink barlink wobbler">
+      <div>
+        <i class="fa-brands fa-linkedin-in"/>
+        <span style="margin-left: 0.2em;">LinkedIn</span>
+      </div>
     </a>
 </footer>
 
@@ -69,9 +75,15 @@
     justify-content: center;
 
     width: 100vw;
-    height: 4em;
+    height: 3em;
 
     font-size: 1.5rem;
+
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .wobbler:hover div {
+    animation: wobble 1s 1;
   }
 
   .sticky {
@@ -83,15 +95,33 @@
   }
 
   .bg-green {
+    background-color: #f8f9fa;
+    color: #99cc99;
+  }
+
+  .bg-green:hover {
     background-color: #99cc99;
+    color: #484547;
   }
 
   .bg-purple {
+    background-color: #f8f9fa;
+    color: #9999cc;
+  }
+
+  .bg-purple:hover {
     background-color: #9999cc;
+    color: #484547;
   }
 
   .bg-pink {
+    background-color: #f8f9fa;
+    color: #cc9999;
+  }
+
+  .bg-pink:hover {
     background-color: #cc9999;
+    color: #484547;
   }
 
   .text-green {
@@ -146,6 +176,30 @@
   @keyframes blink {
     50% {
       opacity: 0;
+    }
+  }
+
+  @keyframes wobble {
+    0% {
+      transform: rotate(0deg) translate(0px, 0px) scale(1);
+    }
+    10% {
+      transform: rotate(-3deg) translate(-2px, 0px) scale(1.05);
+    }
+    20% {
+      transform: rotate(0deg) translate(0px, 0px) scale(1.1);
+    }
+    30% {
+      transform: rotate(2deg) translate(2px, 0px) scale(1.15);
+    }
+    40% {
+      transform: rotate(0deg) translate(0px, 0px) scale(1.2);
+    }
+    50% {
+      transform: rotate(-4deg) translate(-2px, 0px) scale(1.2);
+    }
+    100% {
+      transform: rotate(0deg) translate(0px, 0px) scale(1);
     }
   }
 </style>
