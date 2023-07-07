@@ -13,7 +13,7 @@
   </h1>
 </header>
 
-<div style="display: flex; border: dashed 0.33em; border-color: #48454744; width: 90vw; margin: auto; margin-top: 2em;">
+<div style="display: flex; border: dashed 0.33em; border-color: #48454744; width: 90vw; margin: 4em; margin-top: 2em; margin-bottom: 2em;">
   <div class="circular-image">
     <img src="../profile.webp" alt="My face" id="profile-image"/>
   </div>
@@ -23,13 +23,21 @@
       Hello! My name is Matthew and I am a passionate software engineer. I have experience
       building web applications using modern technologies such as React and Express with TypeScript.
       I am also deeply interested in the future of web technologies and am actively learning and developing
-      with Rust.
+      personal projects.
     </p>
     <br/><br/>
     <p class="summary">
       Outside of software, I also compose and produce ambient, glitch, and experimental music.
       I have extended my sound design skills to the world of game development, and have worked on
       multiple game jam projects, as well as an independent Sci-fi animation project.
+    </p>
+    <br/><br/>
+    <p class="summary">
+      <a href="./mmibbetson_cv.pdf" target="_blank">
+        <button>
+          You can download my CV here.
+        </button>
+      </a>
     </p>
   </div>
 </div>
@@ -61,7 +69,8 @@
         <span style="margin-left: 0.2em;">LinkedIn</span>
       </div>
     </a>
-    <div style="height: 2em;"></div>
+
+    <br/><br/>
 </footer>
 
 <style>
@@ -145,6 +154,10 @@
     display: inline-flex;
     padding: 0.5em;
     width: 20em;
+  }
+
+  .top-shadow {
+    box-shadow: 0 -2px 4px #48454744;
   }
 
   .summary {

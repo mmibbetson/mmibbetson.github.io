@@ -5,7 +5,7 @@
 <div class="microcosmos-container">
     <div class="dashbox">
         <a href="https://microcosmos.live" target="_blank">
-            <h2 class="text-purple">
+            <h2 class="text-purple" style="margin-bottom: 0;">
                 Microcosmos
             </h2>
         </a>
@@ -36,6 +36,11 @@
     }
 
     .dashbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
         border: dashed 0.33em;
         border-color: #48454744;
 

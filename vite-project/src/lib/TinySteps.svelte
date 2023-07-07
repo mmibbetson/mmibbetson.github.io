@@ -26,7 +26,7 @@
 <div class="tinysteps-container">
     <div class="dashbox">
         <a href="https://github.com/mmibbetson/tinysteps" target="_blank">
-            <h2 class="text-red">
+            <h2 class="text-red" style="margin-bottom: 0;">
                 Tiny Steps
             </h2>
         </a>
@@ -40,7 +40,7 @@
         <p class="description">
             Tiny Steps is clearly documented with ease-of-use in mind, and maintains encrypted user accounts
             so that users can save and re-acquire previous or self-submitted chord progressions in JSON format.
-            Although the service currently exists only as a proof-of-concept and is not hosted, it is
+            The service currently exists only as a proof-of-concept, but it is
             rate-limited and robustly designed.
         </p>
     </div>
@@ -51,8 +51,8 @@
             <div class="bottom-text">Example API Output</div>
         </div>
         <div class="slide fade">
-            <img src="api_auth.webp" alt="api example" style="width: 100%;"/>
-            <div class="bottom-text">API Authentication</div>
+            <img src="auth_example.webp" alt="api example" style="width: 100%;"/>
+            <div class="bottom-text">Base64 Authentication</div>
         </div>
         <div class="slide fade">
             <img src="code_example.webp" alt="code example" style="width: 100%;"/>
@@ -82,7 +82,7 @@
         margin-left: 4em;
         margin-right: 4em;
 
-        width: 80%;
+        width: 66vw;
     }
 
     .slide {
@@ -110,7 +110,7 @@
     }
 
     .prev:hover, .next:hover {
-        background-color: #484547cc;
+        background-color: #484547;
     }
 
     .bottom-text {
@@ -134,10 +134,15 @@
     }
 
     .dashbox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         border: dashed 0.33em;
         border-color: #48454744;
 
-        width: 30em;
+        width: 34vw;
     }
 
     .text-red {

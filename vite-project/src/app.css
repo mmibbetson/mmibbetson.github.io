@@ -40,6 +40,12 @@ h1 {
   margin: 0;
 }
 
+h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 header {
   padding: 0.25em;
 }
@@ -61,12 +67,17 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+  color: #484547;
   background-color: #f8f9fa;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s ease-out;
+  transition: color 0.25s ease-out;
+  transition: background-color 0.25s ease-out;
 }
 button:hover {
   border-color: #484547;
+  color: #f8f9fa;
+  background-color: #484547;
 }
 button:focus,
 button:focus-visible {
