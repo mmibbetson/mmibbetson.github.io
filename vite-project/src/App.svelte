@@ -61,6 +61,7 @@
         <span style="margin-left: 0.2em;">LinkedIn</span>
       </div>
     </a>
+    <div style="height: 2em;"></div>
 </footer>
 
 <style>
@@ -75,11 +76,11 @@
     justify-content: center;
 
     width: 100vw;
-    height: 3em;
+    height: 2em;
 
     font-size: 1.5rem;
 
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.1s ease-out;
   }
 
   .wobbler:hover div {
