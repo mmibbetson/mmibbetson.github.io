@@ -70,7 +70,7 @@
         flex-direction: row;
 
         position: relative;
-        left: 5vw;
+        margin-left: 5vw;
         margin-bottom: 2em;
 
         width: 95vw;

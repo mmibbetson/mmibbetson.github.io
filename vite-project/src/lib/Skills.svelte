@@ -56,8 +56,8 @@
         align-items: center;
         justify-content: center;
 
-        width: 9em;
-        height: 9em;
+        width: 10em;
+        height: 10em;
         margin: 1em;
         border-radius: 50%;
 

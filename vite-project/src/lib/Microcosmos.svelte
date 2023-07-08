@@ -31,7 +31,7 @@
     .microcosmos-container {
         position: relative;
         align-self: flex-end;
-        left: -5vw;
+        margin-right: 5vw;
         margin-bottom: 2em;
     }
 

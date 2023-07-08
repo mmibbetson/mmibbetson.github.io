@@ -62,7 +62,8 @@ header {
 /* TODO: Look into how this is done, edit, and use for other elements */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid;
+  border-color: #484547;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -70,12 +71,10 @@ button {
   color: #484547;
   background-color: #f8f9fa;
   cursor: pointer;
-  transition: border-color 0.25s ease-out;
   transition: color 0.25s ease-out;
   transition: background-color 0.25s ease-out;
 }
 button:hover {
-  border-color: #484547;
   color: #f8f9fa;
   background-color: #484547;
 }
