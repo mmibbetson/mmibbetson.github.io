@@ -20,14 +20,14 @@
 
   <div style="margin: auto;">
     <p class="summary">
-      Hello! My name is Matthew and I am a passionate software engineer. I have experience
+      Hello! My name is Matthew. I have experience
       building web applications using modern technologies such as React and Express with TypeScript.
-      I am also deeply interested in the future of web technologies and am actively learning and developing
-      personal projects.
+      I am also deeply interested in the future of web technologies and am actively learning, and developing
+      with, Rust.
     </p>
     <br/><br/>
     <p class="summary" style="padding-top: 0;">
-      Outside of software, I also compose and produce ambient, glitch, and experimental music.
+      Outside of software, I also compose and produce ambient and experimental music.
       I have extended my sound design skills to the world of game development, and have worked on
       multiple game jam projects, as well as an independent Sci-fi animation project.
     </p>
@@ -35,7 +35,7 @@
     <p class="summary" style="padding-top: 0;">
       <a href="./Matthew Ibbetson CV 2023.pdf" target="_blank">
         <button>
-          You can download my CV here.
+          My CV is available here.
         </button>
       </a>
     </p>
