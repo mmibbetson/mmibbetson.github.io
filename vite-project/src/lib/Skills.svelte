@@ -2,8 +2,8 @@
 </script>
 
 <div class="skills-container">
-    <div class="dashbox">
-        <h2 style="color: #99cc99;">My Most-Used Technologies</h2>
+    <div class="dashbox" style="width: 50vw; align-items: center;">
+        <h2 style="color: #99cc99; font-size: 2.5em;">My Most-Used Technologies</h2>
     </div>
 
     <div style="display: flex; flex-direction: row; margin-top: 2em;">

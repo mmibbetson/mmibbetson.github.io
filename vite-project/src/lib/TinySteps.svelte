@@ -10,9 +10,9 @@
     }
 
     function showSlides(n) {
-        let i;
+        let i: number;
         let slides: HTMLCollectionOf<HTMLElement> =
-            document.getElementsByClassName("slide") as HTMLCollectionOf<HTMLElement>;
+            document.getElementsByClassName("slide-tiny") as HTMLCollectionOf<HTMLElement>;
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
@@ -26,7 +26,7 @@
 <div class="tinysteps-container">
     <div class="dashbox">
         <a href="https://github.com/mmibbetson/tinysteps" target="_blank">
-            <h2 class="text-red" style="margin-bottom: 0;">
+            <h2 class="text-red" style="margin-bottom: 0; font-size: 2.5em;">
                 Tiny Steps
             </h2>
         </a>
@@ -36,8 +36,7 @@
             easily generate chord progressions according to the guidelines of western functional harmony.
             The service is built with TypeScript, Express, and SQLite3.
         </p>
-
-        <p class="description">
+        <p class="description" style="padding-top: 0;">
             Tiny Steps is clearly documented with ease-of-use in mind, and maintains encrypted user accounts
             so that users can save and re-acquire previous or self-submitted chord progressions in JSON format.
             The service currently exists only as a proof-of-concept, but it is
@@ -46,19 +45,18 @@
     </div>
 
     <div class="image-slider">
-        <div class="slide fade">
+        <div class="slide-tiny fade">
             <img src="api_example.webp" alt="Tiny Steps" style="width: 100%;"/>
             <div class="bottom-text">Example API Output</div>
         </div>
-        <div class="slide fade">
+        <div class="slide-tiny fade">
             <img src="auth_example.webp" alt="api example" style="width: 100%;"/>
             <div class="bottom-text">Base64 Authentication</div>
         </div>
-        <div class="slide fade">
+        <div class="slide-tiny fade">
             <img src="code_example.webp" alt="code example" style="width: 100%;"/>
             <div class="bottom-text">Code Sample</div>
         </div>
-
         <div class="prev" on:click={() => shiftSlides(-1)} on:keypress={() => shiftSlides(-1)}>&#10094;</div>
         <div class="next" on:click={() => shiftSlides(1)} on:keypress={() => shiftSlides(1)}>&#10095;</div>
     </div>
@@ -71,21 +69,22 @@
 
         position: relative;
         margin-left: 5vw;
+        margin-right: 5vw;
         margin-bottom: 2em;
 
-        width: 95vw;
+        width: 90vw;
     }
 
     .image-slider {
         position: relative;
         margin: auto;
         margin-left: 4em;
-        margin-right: 4em;
+        margin-right: 0;
 
         width: 66vw;
     }
 
-    .slide {
+    .slide-tiny {
         display: none;
     }
 
@@ -142,7 +141,7 @@
         border: dashed 0.33em;
         border-color: #48454744;
 
-        width: 34vw;
+        width: 44vw;
     }
 
     .text-red {
@@ -150,6 +149,6 @@
     }
 
     .description {
-        padding: 1em;
+        padding: 1.5em;
     }
 </style>

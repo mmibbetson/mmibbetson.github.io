@@ -5,7 +5,7 @@
 
 </script>
 
-<header class="drop-shadow sticky" style="display: flex; align-items: center; justify-content: center;">
+<header class="drop-shadow sticky" style="">
   <h1 id="title">Matthew Mark Ibbetson ›
     <span class="text-green">Software Engineer,</span>
     <span class="text-purple">Sound Designer,</span>
@@ -13,7 +13,7 @@
   </h1>
 </header>
 
-<div style="display: flex; border: dashed 0.33em; border-color: #48454744; width: 90vw; margin: 4em; margin-top: 2em; margin-bottom: 2em;">
+<div style="display: flex; border: dashed 0.33em; border-color: #48454744; margin-left: 5vw; margin-right: 5vw; margin-top: 2em; margin-bottom: 2em;">
   <div class="circular-image">
     <img src="../profile.webp" alt="My face" id="profile-image"/>
   </div>
@@ -26,14 +26,14 @@
       personal projects.
     </p>
     <br/><br/>
-    <p class="summary">
+    <p class="summary" style="padding-top: 0;">
       Outside of software, I also compose and produce ambient, glitch, and experimental music.
       I have extended my sound design skills to the world of game development, and have worked on
       multiple game jam projects, as well as an independent Sci-fi animation project.
     </p>
     <br/><br/>
-    <p class="summary">
-      <a href="./mmibbetson_cv.pdf" target="_blank">
+    <p class="summary" style="padding-top: 0;">
+      <a href="./Matthew Ibbetson CV 2023.pdf" target="_blank">
         <button>
           You can download my CV here.
         </button>
@@ -75,7 +75,7 @@
 
 <style>
   #title {
-    width: 100vw;
+    margin: auto;
   }
 
   .barlink {
@@ -156,13 +156,11 @@
     width: 20em;
   }
 
-  .top-shadow {
-    box-shadow: 0 -2px 4px #48454744;
-  }
-
   .summary {
     display: inline-flex;
     margin: auto;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
   }
 
   .circular-image {
