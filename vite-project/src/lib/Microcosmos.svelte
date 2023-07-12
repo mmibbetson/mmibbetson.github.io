@@ -26,16 +26,16 @@
 <div class="microcosmos-container">
     <div class="image-slider">
         <div class="slide-micro fade">
-            <img src="api_example.webp" alt="Tiny Steps" style="width: 100%;"/>
-            <div class="bottom-text">Example API Output</div>
+            <img src="home_page.webp" alt="Microcosmos landing page" style="width: 100%;"/>
+            <div class="bottom-text">Landing Page</div>
         </div>
         <div class="slide-micro fade">
-            <img src="auth_example.webp" alt="api example" style="width: 100%;"/>
-            <div class="bottom-text">Base64 Authentication</div>
+            <img src="item_table.webp" alt="Main table" style="width: 100%;"/>
+            <div class="bottom-text">Main Table</div>
         </div>
         <div class="slide-micro fade">
-            <img src="code_example.webp" alt="code example" style="width: 100%;"/>
-            <div class="bottom-text">Code Sample</div>
+            <img src="dark_mode.webp" alt="Dark mode" style="width: 100%;"/>
+            <div class="bottom-text">Dark Mode</div>
         </div>
         <div class="prev" on:click={() => shiftSlides(-1)} on:keypress={() => shiftSlides(-1)}>&#10094;</div>
         <div class="next" on:click={() => shiftSlides(1)} on:keypress={() => shiftSlides(1)}>&#10095;</div>

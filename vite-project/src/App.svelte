@@ -5,7 +5,7 @@
 
 </script>
 
-<header class="drop-shadow sticky" style="">
+<header class="drop-shadow sticky">
   <h1 id="title">Matthew Mark Ibbetson ›
     <span class="text-green">Software Engineer,</span>
     <span class="text-purple">Sound Designer,</span>
