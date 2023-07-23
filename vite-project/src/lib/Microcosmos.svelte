@@ -26,7 +26,7 @@
 <div class="microcosmos-container">
     <div class="image-slider">
         <div class="slide-micro fade">
-            <img src="home_page.webp" alt="Microcosmos landing page" style="width: 100%;"/>
+            <img src="microcosmos_landing.webp" alt="Microcosmos landing page" style="width: 100%;"/>
             <div class="bottom-text">Landing Page</div>
         </div>
         <div class="slide-micro fade">
@@ -34,8 +34,8 @@
             <div class="bottom-text">Main Table</div>
         </div>
         <div class="slide-micro fade">
-            <img src="dark_mode.webp" alt="Dark mode" style="width: 100%;"/>
-            <div class="bottom-text">Dark Mode</div>
+            <img src="mobile_layout.webp" alt="Dark mode" style="width: 100%;"/>
+            <div class="bottom-text">Mobile Layout</div>
         </div>
         <div class="prev" on:click={() => shiftSlides(-1)} on:keypress={() => shiftSlides(-1)}>&#10094;</div>
         <div class="next" on:click={() => shiftSlides(1)} on:keypress={() => shiftSlides(1)}>&#10095;</div>
