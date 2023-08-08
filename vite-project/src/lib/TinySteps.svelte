@@ -31,17 +31,19 @@
             </h2>
         </a>
 
-        <p class="description">
-            A RESTful API service built for musicians and non-musicians as a utility to quickly and
-            easily generate chord progressions according to the guidelines of western functional harmony.
-            The service is built with TypeScript, Express, and SQLite3.
-        </p>
-        <p class="description" style="padding-top: 0;">
-            Tiny Steps is clearly documented with ease-of-use in mind, and maintains encrypted user accounts
-            so that users can save and re-acquire previous or self-submitted chord progressions in JSON format.
-            The service currently exists only as a proof-of-concept, but it is
-            rate-limited and robustly designed.
-        </p>
+        <div style="display: block">
+            <p class="description">
+                A RESTful API service built for musicians and non-musicians as a utility to quickly and
+                easily generate chord progressions according to the guidelines of western functional harmony.
+                The service is built with TypeScript, Express, and SQLite3.
+            </p>
+            <p class="description" style="padding-top: 0;">
+                Tiny Steps is clearly documented with ease-of-use in mind, and maintains encrypted user accounts
+                so that users can save and re-acquire previous or self-submitted chord progressions in JSON format.
+                The service currently exists only as a proof-of-concept, but it is
+                rate-limited and robustly designed.
+            </p>
+        </div>
     </div>
 
     <div class="image-slider">

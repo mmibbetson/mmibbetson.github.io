@@ -48,18 +48,19 @@
             </h2>
         </a>
 
-        <p class="description">
-            A web application built with TypeScript, React, .NET and AWS Lambda, Microcosmos is a tool for players
-            of the popular MMORPG Final Fantasy XIV. It is a market board analysis tool that makes
-            recommendations to players about what items to buy and sell for maximal profit.
-        </p>
-
-        <p class="description" style="padding-top: 0;">
-            The need for the tool arose from the fact that the time required for the average player to
-            manually analyze the market board and make decisions about what to craft or invest funds into
-            was prohibitively high. As such, we designed Microcosmos to perform an
-            algorithmic analysis at a set interval and ease users' cognitive load.
-        </p>
+        <div style="display:block">
+            <p class="description">
+                A web application built with TypeScript, React, .NET and AWS Lambda, Microcosmos is a tool for players
+                of the popular MMORPG Final Fantasy XIV. It is a market board analysis tool that makes
+                recommendations to players about what items to buy and sell for maximal profit.
+            </p>
+            <p class="description" style="padding-top: 0;">
+                The need for the tool arose from the fact that the time required for the average player to
+                manually analyze the market board and make decisions about what to craft or invest funds into
+                was prohibitively high. As such, we designed Microcosmos to perform an
+                algorithmic analysis at a set interval and ease users' cognitive load.
+            </p>
+        </div>
     </div>
 </div>
 

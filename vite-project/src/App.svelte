@@ -23,7 +23,7 @@
       Hello! My name is Matthew. I have experience
       building web applications using modern technologies such as React and Express with TypeScript.
       I am also deeply interested in the future of web technologies and am actively learning, and developing
-      with, Rust.
+      with, Go.
     </p>
     <br/><br/>
     <p class="summary" style="padding-top: 0;">
