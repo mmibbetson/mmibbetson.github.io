@@ -14,31 +14,32 @@
 </header>
 
 <div style="display: flex; border: dashed 0.33em; border-color: #48454744; margin-left: 5vw; margin-right: 5vw; margin-top: 2em; margin-bottom: 2em;">
-  <div class="circular-image">
-    <img src="../profile.webp" alt="My face" id="profile-image"/>
-  </div>
-
-  <div style="margin: auto;">
-    <p class="summary">
-      Hello! My name is Matthew. I have experience
-      building web applications using modern technologies such as React and Express with TypeScript.
-      I am also deeply interested in the future of web technologies and am actively learning, and developing
-      with, Go.
-    </p>
-    <br/><br/>
-    <p class="summary" style="padding-top: 0;">
-      Outside of software, I also compose and produce ambient and experimental music.
-      I have extended my sound design skills to the world of game development, and have worked on
-      multiple game jam projects, as well as an independent Sci-fi animation project.
-    </p>
-    <br/><br/>
-    <p class="summary" style="padding-top: 0;">
-      <a href="./Matthew Ibbetson CV 2023.pdf" target="_blank">
-        <button>
-          My CV is available here.
-        </button>
-      </a>
-    </p>
+  <div style="margin: auto; display: flex;">
+    <div class="circular-image">
+      <img src="../profile.webp" alt="My face" id="profile-image"/>
+    </div>
+    <div style="margin-top: auto; margin-bottom: auto;">
+      <p class="summary">
+        Hello! My name is Matthew. I have experience
+        building web applications using modern technologies such as React and Express with TypeScript.
+        I am also deeply interested in the future of web technologies and am actively developing multiple projects
+        with Go.
+      </p>
+      <br/><br/>
+      <p class="summary" style="padding-top: 0;">
+        Outside of software, I also compose and produce ambient and experimental music.
+        I have extended my sound design skills to the world of game development, and have worked on
+        multiple game jam projects, as well as an independent Sci-fi animation project.
+      </p>
+      <br/><br/>
+      <p class="summary" style="padding-top: 0;">
+        <a href="./Matthew Ibbetson CV 2023.pdf" target="_blank">
+          <button>
+            My CV is available here.
+          </button>
+        </a>
+      </p>
+    </div>
   </div>
 </div>
 
