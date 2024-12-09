@@ -1,9 +1,8 @@
 +++
 title = "litr"
-date  = 2024-11-24T23:36:00+02:00
+date  = 2024-12-10
 +++
 
-# litr
+## litr
 
 `litr` is a literate programming CLI tool.
-

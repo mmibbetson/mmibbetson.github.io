@@ -2,8 +2,7 @@
 
 {% block content %}
 <h1 class="title">
-  This is my blog made with Zola.
-
-  There is no styling or content, currently.
+  {{ page.title }}
 </h1>
+{{ page.content | safe }}
 {% endblock content %}

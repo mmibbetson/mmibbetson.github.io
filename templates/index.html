@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>λm.m</title>
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-  </head>
-
-  <body>
-    <header>
-      <h1 class="site-title"><a href="/">λm.m</a></h1>
-      <nav>
-        <ul>
-          <a class="nav-item" href="/tags">/tags</a>
-          <a class="nav-item" href="/blog">/blog</a>
-          <a class="nav-item" href="/software">/software</a>
-        </ul>
-      </nav>
-    </header>
-    <hr id="header-rule" />
-
-    <main>
+{% extends "base.html" %} {% block content %}
 <h1>About</h1>
 <p>
   Hi! I'm Matthew Mark Ibbetson. I'm a software developer with preference for functional programming 
@@ -45,20 +22,4 @@
   I can be reached via <a>email</a> and be found with the username "mmibbetson" wherever I have an
   account.
 </p>
-</main>
-
-    <hr id="footer-rule" />
-    <footer>
-      <span class="line">© 2024 Matthew Mark Ibbetson,&nbsp;</span>
-      <span class="line">
-        Content
-        <a href="/license/CC-BY-NC-SA-4.0.txt">CC-BY-NC-SA-4.0</a>
-        ,&nbsp;
-      </span>
-      <span class="line">
-        Source Code
-        <a href="/license/AGPL-3.0-or-later.txt">AGPL-3.0-or-later</a>
-      </span>
-    </footer>
-  </body>
-</html>
+{% endblock content %}

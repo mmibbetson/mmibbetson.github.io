@@ -2,42 +2,62 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Quixotic</title>
+    <title>λm.m</title>
     <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
   </head>
 
   <body>
     <header>
-      <h1 class="site-title"><a href="/">Untitled</a></h1>
+      <h1 class="site-title"><a href="/">λm.m</a></h1>
       <nav>
         <ul>
+          <a class="nav-item" href="/tags">/tags</a>
           <a class="nav-item" href="/blog">/blog</a>
           <a class="nav-item" href="/software">/software</a>
         </ul>
       </nav>
     </header>
+    <hr id="header-rule" />
 
     <main>
+<p class="blog-contribution-date">
+  <em>2024-11-24</em>
+</p>
 <h1 class="title">
   My Test Post
 </h1>
-<p class="subtitle"><strong>2024-11-24T23:19:00+02:00</strong></p>
-<h1 id="heading">Heading</h1>
-<p>This is a <strong>paragraph</strong> with some additional text.</p>
+<p>This is a <strong>paragraph</strong> with some additional text 😄 and also some <em><code>verbatim text</code></em>. What happens if a line goes longer, I wonder? Where do we hit the newline word wrap? Does it stop widening the main text area?</p>
 <p>$\lnot P \land \lnot Q = \lnot (P \lor Q)$</p>
 <p>$\lnot P \lor \lnot Q = \lnot (P \land Q)$</p>
+<p>Looks like math doesn’t render currently 😦.</p>
 <h2 id="code-fence">Code Fence</h2>
-<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">pub fn </span><span style="color:#8fa1b3;">main</span><span>() {
-</span><span>    println!(&quot;</span><span style="color:#a3be8c;">Hello, Blog!</span><span>&quot;);
+<p>Here’s some rust:</p>
+<pre data-lang="rs" style="background-color:#282828;color:#fdf4c1aa;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#fa5c4b;">pub fn </span><span style="color:#8ec07c;">main</span><span>() {
+</span><span>    </span><span style="color:#fabd2f;">println!</span><span>(</span><span style="color:#b8bb26;">&quot;Hello, Blog!&quot;</span><span>);
 </span><span>}
+</span></code></pre>
+<p>And here’s some elixir:</p>
+<pre data-lang="elixir" style="background-color:#282828;color:#fdf4c1aa;" class="language-elixir "><code class="language-elixir" data-lang="elixir"><span style="color:#fa5c4b;">def </span><span style="color:#8ec07c;">concat_style</span><span>(prefix) </span><span style="color:#fa5c4b;">do
+</span><span>  prefix </span><span style="color:#fe8019;">&lt;&gt; </span><span style="color:#b8bb26;">&quot;style!&quot;
+</span><span style="color:#fa5c4b;">end
 </span></code></pre>
 
 </main>
 
+    <hr id="footer-rule" />
     <footer>
-      <ul>
-        <li><a href="http://github.com/mmibbetson">GitHub</a></li>
-      </ul>
+      <span class="line">© 2024 Matthew Mark Ibbetson,&nbsp;</span>
+      <span class="line">
+        Content
+        <a href="/license/CC-BY-NC-SA-4.0.txt">CC-BY-NC-SA-4.0</a>
+        ,&nbsp;
+      </span>
+      <span class="line">
+        Source Code
+        <a href="/license/AGPL-3.0-or-later.txt">AGPL-3.0-or-later</a>
+      </span>
     </footer>
   </body>
 </html>
