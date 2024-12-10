@@ -1,11 +1,13 @@
-{% extends "base.html" %}
-
-{% block content %}
-<p class="blog-contribution-date">
-  <em>{{ page.date }}</em>
-</p>
-<h1 class="title">
-  {{ page.title }}
-</h1>
-{{ page.content | safe }}
+{% extends "base.html" %} {% block content %}
+<p id="content-page-date">{{ page.date }}</p>
+<ul class="blog-tag-bubble-list">
+  {% set tags = page.taxonomies.tags | default(value=[]) | sort %}
+  {% for tag in tags %}
+  <li class="blog-tag-bubble">{{tag}}</li>
+  {%endfor%}
+</ul>
+<h1 id="content-page-title">{{ page.title }}</h1>
+<div>{{ page.content | safe }}</div>
+<div id="word-count">Word count: {{page.word_count}}</div>
+<div id="reading-time">Estimated reading time: {{page.reading_time}}</div>
 {% endblock content %}
