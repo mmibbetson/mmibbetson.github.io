@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Lambdaaa - how liar?</title>
+    <subtitle>Personal blog site for mmibbetson</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mmibbetson.github.io/tags/how-liar/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mmibbetson.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-12-10T00:00:00+00:00</updated>
+    <id>https://mmibbetson.github.io/tags/how-liar/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Second Example</title>
+        <published>2024-12-10T00:00:00+00:00</published>
+        <updated>2024-12-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Matthew Mark Ibbetson
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mmibbetson.github.io/blog/test2/"/>
+        <id>https://mmibbetson.github.io/blog/test2/</id>
+        
+        <content type="html" xml:base="https://mmibbetson.github.io/blog/test2/">&lt;p&gt;Now then, is this rendering correctly? 🤔&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -8,6 +8,8 @@
 </ul>
 <h1 id="content-page-title">{{ page.title }}</h1>
 <div>{{ page.content | safe }}</div>
-<div id="word-count">Word count: {{page.word_count}}</div>
-<div id="reading-time">Estimated reading time: {{page.reading_time}}</div>
+<div id="meta-subsection">
+  <div id="reading-time">Estimated reading time: {{page.reading_time}}</div>
+  <div id="word-count">Word count: {{page.word_count}}</div>
+</div>
 {% endblock content %}
