@@ -12,7 +12,7 @@ default_language = "en"
 # theme = ""
 
 # For overriding the default output directory `public`, set it to another value (e.g.: "docs")
-output_dir = "docs"
+output_dir = "build"
 
 # Whether dotfiles at the root level of the output directory are preserved when (re)building the site.
 # Enabling this also prevents the deletion of the output folder itself on rebuilds.
