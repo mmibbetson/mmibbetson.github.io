@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block content %}
 <h1 id="content-list-title">Tags</h1>
+<hr class="title-underline" />
 <div id="tags-labels">
   {% for term in terms -%}
   <a href="#{{ term.name }}" class="tag-label internal-link">{{ term.name }}</a>
@@ -38,10 +39,10 @@
     <div>
       <span class="tags-post-title decorated-link">{{ page.title }}</span>
     </div>
-      <time datetime="{{ page.date }}" class="tags-post-date">
-        {{ page.date | date(format=config.extra.timeformat | default(value="%e
-        %B %Y")) }}
-      </time>
+    <time datetime="{{ page.date }}" class="tags-post-date">
+      {{ page.date | date(format=config.extra.timeformat | default(value="%e %B
+      %Y")) }}
+    </time>
   </a>
   {% endfor -%}
 </div>

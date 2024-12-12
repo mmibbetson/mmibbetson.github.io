@@ -2,16 +2,19 @@
 <div id="content-page-meta-top">
   <span id="content-page-date">{{ page.date }}</span>
   <ul class="blog-tag-list">
-    {% set tags = page.taxonomies.tags | default(value=[]) | sort %}
-    {% for tag in tags %}
-    <li class="blog-tag"><a href="/tags/{{tag}}" class="decorated-link">{{tag}}</a></li>
+    {% set tags = page.taxonomies.tags | default(value=[]) | sort %} {% for tag
+    in tags %}
+    <li class="blog-tag">
+      <a href="/tags/{{tag}}" class="decorated-link">{{tag}}</a>
+    </li>
     {%endfor%}
   </ul>
 </div>
 <h1 id="content-page-title">{{ page.title }}</h1>
+<hr class="title-underline" />
 <section>{{ page.content | safe }}</section>
 <div id="content-page-meta-bottom">
-    <div id="reading-time">Estimated reading time: {{page.reading_time}}m</div>
-    <div id="word-count">Word count: {{page.word_count}}</div>
+  <div id="reading-time">Estimated reading time: {{page.reading_time}}m</div>
+  <div id="word-count">Word count: {{page.word_count}}</div>
 </div>
 {% endblock content %}

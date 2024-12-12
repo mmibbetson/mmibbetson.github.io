@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block content %}
 <h1 id="content-list-title">{{ section.title }}</h1>
+<hr class="title-underline" />
 <p id="content-list-description">{{ section.description }}</p>
 <div class="content-listing">
   {% for page in section.pages %}

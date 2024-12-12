@@ -1,11 +1,14 @@
 {% extends "base.html" %} {% block content %}
 <h1 id="content-list-title">{{ section.title }}</h1>
+<hr class="title-underline" />
 <p id="content-list-description">{{ section.description }}</p>
 <div class="content-listing">
   {% for page in section.pages %}
   <a href="{{ page.permalink | safe }}">
     <div class="software-card">
-      <h3 class="software-card-title decorated-link">{{ page.title }}&nbsp;|&nbsp;</h3>
+      <h3 class="software-card-title decorated-link">
+        {{ page.title }}&nbsp;|&nbsp;
+      </h3>
       <p class="software-card-description">{{page.description | safe}}</p>
     </div>
   </a>

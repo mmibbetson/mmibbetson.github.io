@@ -321,6 +321,16 @@ hr {
   margin-left: auto;
 }
 
+.title-underline {
+  width: 100%;
+  max-width: 12rem;
+  color: var(--fg);
+  padding: 0.25rem;
+  background-color: var(--fg);
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
 #header-banner {
   display: flex;
   flex-direction: row;
@@ -335,6 +345,7 @@ hr {
 #content-list-title {
   font-size: var(--text-xl);
   text-align: center;
+  margin-bottom: 0;
 }
 
 #content-list-description {
@@ -352,6 +363,7 @@ hr {
 #content-page-title {
   font-size: var(--text-xl);
   text-align: center;
+  margin-bottom: 0;
 }
 
 #content-page-meta-top {

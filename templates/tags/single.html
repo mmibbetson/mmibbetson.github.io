@@ -1,12 +1,14 @@
 {% extends "base.html" %} {% block content %}
-<div class="tags">
-  <div class="tags-header">
-    <h2 class="tags-header-title">{{ term.name }}</h2>
-    <div class="tags-header-line"></div>
-  </div>
-</div>
+<h1 id="content-list-title">{{ term.name }}</h1>
+<hr class="title-underline" />
 
-<div class="catalogue">
-  {% for page in term.pages -%} <a href="{{page.permalink | safe}}">{{page.title}}</a> {%- endfor %}
+<div class="content-listing">
+  {% for page in term.pages -%}
+  <a href="{{ page.permalink | safe }}" class="blog-card">
+    <h3 class="blog-card-title decorated-link">{{ page.title }}</h3>
+    <span class="blog-card-date">{{page.date}}</span>
+    <p class="blog-card-description">{{page.description | safe}}</p>
+  </a>
+  {%- endfor %}
 </div>
 {% endblock content %}
