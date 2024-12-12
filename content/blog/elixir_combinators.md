@@ -18,7 +18,7 @@ $\lnot P \land \lnot Q = \lnot (P \lor Q)$
 
 $\lnot P \lor \lnot Q = \lnot (P \land Q)$
 
-Looks like math doesn't render currently 😦.
+Looks like math does render currently 😄.
 
 ---
 
