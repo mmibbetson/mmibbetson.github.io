@@ -1,5 +1,5 @@
 +++
-title       = "Elixir Combinators"
+title       = "Combinatory Logic"
 date        = 2024-12-12
 description = """
 Combinators are a central concept in functional programming, and one of the most interesting
@@ -7,7 +7,7 @@ rabbit holes one can fall down is that of combinatory logic, and the use of the 
 Calculus for powerful function manipulation.
 """
 [taxonomies]
-tags = ["combinators", "fp", "elixir"]
+tags = ["combinators", "fp", "λ"]
 +++
 
 ## Combinatory Logic & The SK(I) Combinator Calculus
@@ -36,11 +36,10 @@ and array language like APL, J, or BQN.
 
 <!--can do `elixir,linenos,linenostart=10,hl_lines=3-4 8-9,hide_lines=2 7`-->
 
-```elixir
-# a -> a
-def idiot(a) do
-  a
-end
+```scm
+;; a -> a
+(define I
+  (λ (a) (a)))
 ```
 
 - K
@@ -49,11 +48,11 @@ end
 - True
 - Left
 
-```elixir
-# a -> b -> a
-def kestrel(a, b) do
-  a
-end
+```scm
+;; a -> b -> a
+(define K
+  (curry 
+    (λ (a b) (a))))
 ```
 
 - S
@@ -62,9 +61,9 @@ end
 - ap
 - <\*>
 
-```elixir
-# (a -> b -> c) -> (a -> b) -> a -> c
-def starling(a, b, c) do
-  a(c, b(c))
-end
+```scm
+;; (a -> b -> c) -> (a -> b) -> a -> c
+(define S
+  (curry 
+    (λ (a b c) (a c (b c)))))
 ```
