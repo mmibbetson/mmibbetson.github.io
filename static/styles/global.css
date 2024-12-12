@@ -26,10 +26,10 @@
   --fg: black;
   --fg-transparent: #00000011;
   --bg: white;
-  --bg-alt: white;
+  --bg-alt: grey;
   --bg-code: #ebdbb2;
   --link: lightblue;
-  --link-active: black;
+  --link-active: lightblue;
   --link-glow: lightblue;
   --primary: lightgreen;
   --secondary: lightblue;
@@ -92,7 +92,8 @@ header {
 
 main {
   flex: 1;
-  max-width: 60rem;
+  width: 60rem;
+  max-width: 100%;
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -101,6 +102,7 @@ footer {
   display: flex;
   flex-direction: row;
   place-items: center;
+  margin-top: 1rem;
   padding-bottom: 1rem;
   padding-top: 1rem;
   padding-left: 2rem;
@@ -113,6 +115,33 @@ footer {
 
 pre {
   padding: 1rem;
+  overflow: auto;
+}
+
+/* The line numbers already provide some kind of left/right padding */
+pre[data-linenos] {
+  padding: 1rem 0;
+}
+pre table td {
+  padding: 0;
+}
+
+/* The line number cells */
+pre table td:nth-of-type(1) {
+  text-align: center;
+  user-select: none;
+}
+
+pre mark {
+  /* If you want your highlights to take the full width */
+  display: block;
+  /* The default background colour of a mark is bright yellow */
+  background-color: rgba(254, 252, 232, 0.9);
+}
+
+pre table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 code {
@@ -126,31 +155,35 @@ a {
   transition: all 0.1s ease;
 }
 
-a:hover {
+a:hover .decorated-link {
   color: var(--link-active);
   text-shadow: 0 0 0.1rem var(--link-glow), 0 0 0.2rem var(--link-glow),
     0 0 0.2rem var(--link-glow), 0 0 0.5rem var(--link-glow);
   text-decoration: none;
 }
 
+.decorated-link:hover {
+  color: var(--link-active);
+  text-shadow: 0 0 0.1rem var(--link-glow), 0 0 0.2rem var(--link-glow),
+    0 0 0.2rem var(--link-glow), 0 0 0.5rem var(--link-glow);
+  text-decoration: none;
+}
+
+.internal-link {
+  color: var(--fg);
+}
+
+.internal-link:hover {
+  text-decoration: underline;
+}
+
 hr {
   color: var(--fg-transparent);
   width: 80%;
-  margin: 0;
-}
-
-#header-banner {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  max-width: 60rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
   justify-self: center;
 }
 
-.site-title {
+#site-title {
   font-size: var(--text-lg);
   margin-right: auto;
 }
@@ -158,16 +191,6 @@ hr {
 .nav-item {
   font-size: var(--text-lg);
   padding-right: 0.5rem;
-}
-
-#content-list-title {
-  font-size: var(--text-xl);
-  text-align: center;
-}
-
-#content-list-description {
-  font-size: var(--text-lg);
-  text-align: center;
 }
 
 .content-listing {
@@ -186,10 +209,13 @@ hr {
 .blog-card-title {
   display: flex;
   flex-direction: row;
+  margin-bottom: 0.125rem;
 }
 
 .blog-card-date {
-  margin-left: auto;
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--bg-alt);
 }
 
 .blog-card-description {
@@ -224,6 +250,98 @@ hr {
   margin-left: auto;
 }
 
+.blog-tag-list {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  place-items: center;
+  margin: 0;
+  margin-left: auto;
+  list-style-type: none;
+}
+
+.blog-tag {
+  margin-left: 0.25rem;
+  padding: 0.125rem;
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--tertiary);
+}
+
+.tag-label {
+  padding: 0.25rem;
+  margin: 0.125rem;
+  background-color: var(--bg-alt);
+  border-radius: 0.125rem;
+  transition: all 0.1s;
+}
+
+.tag-label:hover {
+  padding: 0.25rem;
+  margin: 0.125rem;
+  background-color: var(--link-glow);
+  border-radius: 0.125rem;
+  color: var(--link-active);
+  box-shadow: 0 0 0.1rem var(--link-glow), 0 0 0.2rem var(--link-glow),
+    0 0 0.2rem var(--link-glow), 0 0 0.5rem var(--link-glow);
+  text-decoration: none;
+}
+
+.tags-item-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.tags-item-header {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+}
+
+.tags-item-label {
+  font-size: var(--text-lg);
+}
+
+.tags-item-icon {
+  margin-right: 0.75rem;
+}
+
+.tags-post-container {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  max-width: 60rem;
+  font-size: var(--text-md);
+}
+
+.tags-post-date {
+  color: var(--bg-alt);
+  font-style: italic;
+  margin-left: auto;
+}
+
+#header-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 60rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  justify-self: center;
+}
+
+#content-list-title {
+  font-size: var(--text-xl);
+  text-align: center;
+}
+
+#content-list-description {
+  font-size: var(--text-lg);
+  text-align: center;
+}
+
 #content-page-date {
   text-align: center;
   font-style: italic;
@@ -236,27 +354,14 @@ hr {
   text-align: center;
 }
 
-.blog-tag-bubble-list {
+#content-page-meta-top {
   display: flex;
   flex-direction: row;
-  justify-items: center;
   place-items: center;
-  padding: 1rem;
-  list-style-type: none;
+  padding-top: 0.25rem;
 }
 
-.blog-tag-bubble {
-  padding: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  margin-top: 0.75rem;
-  margin: 0.5rem;
-  border: 0.125rem solid var(--secondary);
-  border-radius: 0.125rem;
-  background-color: var(--bg-alt);
-}
-
-#meta-subsection {
+#content-page-meta-bottom {
   display: flex;
   flex-direction: row;
 }
@@ -274,4 +379,11 @@ hr {
   font-style: italic;
   font-size: var(--text-sm);
   color: var(--tertiary);
+}
+
+#tags-labels {
+  display: flex;
+  flex-wrap: wrap;
+  place-items: center;
+  place-content: center;
 }

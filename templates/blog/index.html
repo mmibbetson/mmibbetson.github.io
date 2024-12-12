@@ -3,15 +3,11 @@
 <p id="content-list-description">{{ section.description }}</p>
 <div class="content-listing">
   {% for page in section.pages %}
-  <div class="blog-card">
-    <a href="{{ page.permalink | safe }}">
-      <h3 class="blog-card-title">
-        {{ page.title }}
-        <span class="blog-card-date">{{page.date}}</span>
-      </h3>
-      <p class="blog-card-description">{{page.description | safe}}</p>
-    </a>
-  </div>
+  <a href="{{ page.permalink | safe }}" class="blog-card">
+    <h3 class="blog-card-title decorated-link">{{ page.title }}</h3>
+    <span class="blog-card-date">{{page.date}}</span>
+    <p class="blog-card-description">{{page.description | safe}}</p>
+  </a>
   {% endfor %}
 </div>
 {% endblock content %}

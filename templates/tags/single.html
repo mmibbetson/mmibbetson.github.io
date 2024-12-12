@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+<div class="tags">
+  <div class="tags-header">
+    <h2 class="tags-header-title">{{ term.name }}</h2>
+    <div class="tags-header-line"></div>
+  </div>
+</div>
+
+<div class="catalogue">
+  {% for page in term.pages -%} <a href="{{page.permalink | safe}}">{{page.title}}</a> {%- endfor %}
+</div>
+{% endblock content %}

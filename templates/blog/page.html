@@ -1,15 +1,17 @@
 {% extends "base.html" %} {% block content %}
-<p id="content-page-date">{{ page.date }}</p>
-<ul class="blog-tag-bubble-list">
-  {% set tags = page.taxonomies.tags | default(value=[]) | sort %}
-  {% for tag in tags %}
-  <li class="blog-tag-bubble">{{tag}}</li>
-  {%endfor%}
-</ul>
+<div id="content-page-meta-top">
+  <span id="content-page-date">{{ page.date }}</span>
+  <ul class="blog-tag-list">
+    {% set tags = page.taxonomies.tags | default(value=[]) | sort %}
+    {% for tag in tags %}
+    <li class="blog-tag"><a href="/tags/{{tag}}" class="decorated-link">{{tag}}</a></li>
+    {%endfor%}
+  </ul>
+</div>
 <h1 id="content-page-title">{{ page.title }}</h1>
 <div>{{ page.content | safe }}</div>
-<div id="meta-subsection">
-  <div id="reading-time">Estimated reading time: {{page.reading_time}}</div>
+<div id="content-page-meta-bottom">
+  <div id="reading-time">Estimated reading time: {{page.reading_time}}m</div>
   <div id="word-count">Word count: {{page.word_count}}</div>
 </div>
 {% endblock content %}

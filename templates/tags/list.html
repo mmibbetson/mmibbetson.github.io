@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block content %}
+<h1 id="content-list-title">Tags</h1>
+<div id="tags-labels">
+  {% for term in terms -%}
+  <a href="#{{ term.name }}" class="tag-label internal-link">{{ term.name }}</a>
+  {%- endfor %}
+</div>
+
+{% for term in terms -%}
+<div class="tags-item-container" id="{{ term.name }}">
+  <div class="tags-item-header">
+    <svg
+      class="tags-item-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path
+        d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+      ></path>
+      <line x1="7" y1="7" x2="7.01" y2="7"></line>
+    </svg>
+    <h2 class="tags-item-label">
+      <a href="{{ term.permalink | safe }}" class="decorated-link"
+        >{{ term.name }}</a
+      >
+    </h2>
+  </div>
+
+  {% for page in term.pages -%}
+  <a href="{{ page.permalink | safe }}" class="tags-post-container">
+    <div>
+      <span class="tags-post-title decorated-link">{{ page.title }}</span>
+    </div>
+      <time datetime="{{ page.date }}" class="tags-post-date">
+        {{ page.date | date(format=config.extra.timeformat | default(value="%e
+        %B %Y")) }}
+      </time>
+  </a>
+  {% endfor -%}
+</div>
+{% endfor -%} {% endblock content %}
