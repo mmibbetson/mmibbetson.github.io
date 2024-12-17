@@ -12,14 +12,6 @@ tags = ["combinators", "fp"]
 
 ## Combinatory Logic & The SK(I) Combinator Calculus
 
-This is a **paragraph** with some additional text 😄 and also some _`verbatim text`_. What happens if a line goes longer, I wonder? Where do we hit the newline word wrap? Does it stop widening the main text area?
-
-$\lnot P \land \lnot Q = \lnot (P \lor Q)$
-
-$\lnot P \lor \lnot Q = \lnot (P \land Q)$
-
-Looks like math does render currently 😄.
-
 ---
 
 ## The Primary Combinators
@@ -34,11 +26,11 @@ and array language like APL, J, or BQN.
 - Idiot
 - Ibis
 
-<!--can do `elixir,linenos,linenostart=10,hl_lines=3-4 8-9,hide_lines=2 7`-->
+<!--can do `scm,linenos,linenostart=10,hl_lines=3-4 8-9,hide_lines=2 7`-->
 
 ```scm
 ;; a -> a
-(define I
+(define ibis
   (λ (a) (a)))
 ```
 
@@ -50,7 +42,7 @@ and array language like APL, J, or BQN.
 
 ```scm
 ;; a -> b -> a
-(define K
+(define kestrel
   (curry 
     (λ (a b) (a))))
 ```
@@ -63,7 +55,7 @@ and array language like APL, J, or BQN.
 
 ```scm
 ;; (a -> b -> c) -> (a -> b) -> a -> c
-(define S
+(define starling
   (curry 
     (λ (a b c) (a c (b c)))))
 ```
