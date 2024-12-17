@@ -89,12 +89,17 @@ footer {
 pre {
   padding: 1rem;
   overflow: auto;
+  border-radius: 0.5rem;
+  border: 0.125rem solid var(--ctp-stx-blue);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* The line numbers already provide some kind of left/right padding */
 pre[data-linenos] {
   padding: 1rem 0;
 }
+
 pre table td {
   padding: 0;
 }
@@ -119,38 +124,62 @@ pre table {
 
 code {
   font-family: var(--font-code);
+  line-height: 1.33;
 }
 
 a {
-  color: var(--ctp-overlay-2);
+  color: var(--ctp-blue);
   text-decoration-line: none;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.decorated-link {
-  transition: all 0.2s ease;
+a:hover,
+a:focus {
+  color: var(--ctp-sky);
+  text-decoration: underline;
+}
+
+.decorated-link,
+.tag-link,
+.home-link,
+.nav-link,
+.internal-link,
+.tag-section-link {
+  color: var(--ctp-overlay-2);
+  transition: all 0.15s ease;
 }
 
 a:hover .decorated-link,
 a:focus .decorated-link {
-  color: var(--ctp-teal);
+  color: var(--ctp-sky);
   text-decoration: none;
 }
 
 .decorated-link:hover,
 .decorated-link:focus {
-  color: var(--ctp-red);
+  color: var(--ctp-sky);
   text-decoration: none;
 }
 
-.internal-link {
-  color: var(--ctp-overlay-2);
+.tag-link:hover {
+  color: var(--ctp-yellow);
+  text-decoration: none;
 }
 
-.internal-link:hover,
-.internal-link:focus {
-  color: var(--ctp-peach);
+.tag-section-link:hover {
+  color: var(--ctp-flamingo);
+  text-decoration: none;
+}
+
+.home-link:hover {
+  color: var(--ctp-sky);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--ctp-sky);
+  text-decoration: none;
 }
 
 hr {
@@ -186,6 +215,10 @@ hr {
   justify-content: center;
 }
 
+.content-listing a {
+  text-decoration: none;
+}
+
 .blog-card {
   width: 100%;
   border-bottom: 0.125rem solid var(--ctp-surface-2);
@@ -216,7 +249,7 @@ hr {
   flex-direction: row;
   width: 100%;
   place-items: center;
-  justify-items: center;
+  place-content: center;
 }
 
 .software-card-title {
@@ -235,6 +268,7 @@ hr {
   justify-self: center;
   max-width: 20rem;
   margin-left: auto;
+  padding-left: 1rem;
 }
 
 .blog-tag-list {
@@ -265,7 +299,7 @@ hr {
 .tag-label:hover,
 .tag-label:focus {
   border-radius: 0.125rem;
-  color: var(--ctp-peach);
+  color: var(--ctp-flamingo);
   text-decoration: none;
 }
 
@@ -273,6 +307,10 @@ hr {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+}
+
+.tags-item-container a {
+  text-decoration: none;
 }
 
 .tags-item-header {

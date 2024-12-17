@@ -5,7 +5,7 @@
     {% set tags = page.taxonomies.tags | default(value=[]) | sort %} {% for tag
     in tags %}
     <li class="blog-tag">
-      <a href="/tags/{{tag}}" class="decorated-link">{{tag}}</a>
+      <a href="/tags/{{tag}}" class="tag-link">{{tag}}</a>
     </li>
     {%endfor%}
   </ul>
