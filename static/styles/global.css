@@ -20,26 +20,20 @@
 
 :root {
   --font-code: "CommitMono";
-
+  --text-sm: clamp(1rem, 2vw, 2rem);
+  --text-md: clamp(2rem, 3vw, 3rem);
+  --text-lg: clamp(3rem, 4vw, 4rem);
+  --text-xl: clamp(4rem, 5vw, 5rem);
   font-family: Inter, sans-serif;
   font-feature-settings: "liga" 1, "calt" 1; /* fix for Chrome */
 }
 
-@media screen and (width >= 768px) {
+@media (width >= 768px) {
   :root {
     --text-sm: clamp(0.75rem, 2vw, 1rem);
     --text-md: clamp(1rem, 2.5vw, 1.25rem);
     --text-lg: clamp(1.5rem, 3vw, 2rem);
     --text-xl: clamp(2.5rem, 4vw, 3.5rem);
-  }
-}
-
-@media screen and (width < 768px) {
-  :root {
-    --text-sm: clamp(1rem, 2vw, 2rem);
-    --text-md: clamp(2rem, 3vw, 3rem);
-    --text-lg: clamp(3rem, 4vw, 4rem);
-    --text-xl: clamp(4rem, 5vw, 5rem);
   }
 }
 
