@@ -7,7 +7,7 @@ rabbit holes one can fall down is that of combinatory logic, and the use of the 
 Calculus for powerful function manipulation.
 """
 [taxonomies]
-tags = ["combinators", "fp", "λ"]
+tags = ["combinators", "fp"]
 +++
 
 ## Combinatory Logic & The SK(I) Combinator Calculus

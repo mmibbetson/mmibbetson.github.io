@@ -6,7 +6,7 @@ and ease of integration with plain text markup.
 """
 date  = 2024-12-10
 [taxonomies]
-tags =  ["test"]
+tags =  ["rust"]
 +++
 
 `litr` is a literate programming CLI tool.

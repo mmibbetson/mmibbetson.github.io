@@ -1,12 +1,12 @@
-{% block content %}
-<div id="notfound">
-  <h1 id="notfound-error">404: Page not found</h1>
-  <hr class="title-underline" />
-  <p id="notfound-message">
-    Oops! We can't seem to find the page you are looking for.<a
-      href="{{ config.base_url | safe }}"
-      >TODO: Fix this place, man.</a
-    >
-  </p>
-</div>
+{% extends "base.html" %} {% block content %}
+<h1 id="content-list-title">Page Not Found</h1>
+<hr class="title-underline" />
+<p id="notfound-message">
+  It looks like the page you're trying to access does not exist.
+  <br />
+  <br />
+  <a class="decorated-link" href="{{ config.base_url | safe }}"
+    >Click here to go back to the home page</a
+  >.
+</p>
 {% endblock content %}

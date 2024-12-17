@@ -6,7 +6,7 @@ utility for cross-platform terminal use.
 """
 date  = 2024-11-24
 [taxonomies]
-tags =  ["test"]
+tags =  ["rust"]
 +++
 
 `dn` is a PKMS CLI tool.
