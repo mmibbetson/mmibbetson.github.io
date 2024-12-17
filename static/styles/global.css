@@ -21,10 +21,10 @@
 :root {
   --font-code: "CommitMono";
   /* These font sizes are not acceptable on mobile. */
-  --text-sm: 1rem;
-  --text-md: 1.25rem;
-  --text-lg: 2rem;
-  --text-xl: 3rem;
+  --text-sm: clamp(0.75rem, 2vw, 1rem);
+  --text-md: clamp(1rem, 2.5vw, 1.25rem);
+  --text-lg: clamp(1.5rem, 3vw, 2rem);
+  --text-xl: clamp(2.5rem, 4vw, 3.5rem);
 
   font-family: Inter, sans-serif;
   font-feature-settings: "liga" 1, "calt" 1; /* fix for Chrome */
@@ -184,6 +184,7 @@ hr {
 }
 
 .blog-card-title {
+  font-size: var(--text-lg);
   display: flex;
   flex-direction: row;
   margin-bottom: 0.125rem;
