@@ -71,14 +71,6 @@ main {
   padding-right: 2rem;
 }
 
-em {
-  color: var(--ctp-peach);
-}
-
-strong {
-  color: var(--ctp-maroon);
-}
-
 footer {
   display: flex;
   flex-direction: row;
@@ -433,4 +425,68 @@ hr {
   font-size: var(--text-lg);
   text-align: center;
   place-content: center;
+}
+
+.footnote-definition {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+}
+
+.footnote-definition-label {
+  font-size: var(--text-sm);
+  margin-right: 1rem;
+}
+
+.footnote-definition pre {
+  border: none;
+  border-radius: 0;
+  background-color: var(--ctp-base);
+  padding: 0;
+}
+
+.footnote-definition code {
+  font-family: Inter, sans-serif;
+  color: var(--ctp-text);
+  padding: 0;
+}
+
+.zola-anchor {
+  color: var(--ctp-text);
+}
+
+h1 .zola-anchor:focus,
+h1 .zola-anchor:hover {
+  color: var(--ctp-red);
+  text-decoration: none;
+}
+
+h2 .zola-anchor:focus,
+h2 .zola-anchor:hover {
+  color: var(--ctp-peach);
+  text-decoration: none;
+}
+
+h3 .zola-anchor:focus,
+h3 .zola-anchor:hover {
+  color: var(--ctp-yellow);
+  text-decoration: none;
+}
+
+h4 .zola-anchor:focus,
+h4 .zola-anchor:hover {
+  color: var(--ctp-green);
+  text-decoration: none;
+}
+
+h5 .zola-anchor:focus,
+h5 .zola-anchor:hover {
+  color: var(--ctp-blue);
+  text-decoration: none;
+}
+
+h6 .zola-anchor:focus,
+h6 .zola-anchor:hover {
+  color: var(--ctp-lavender);
+  text-decoration: none;
 }
