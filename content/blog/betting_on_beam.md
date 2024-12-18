@@ -39,7 +39,7 @@ Saša Jurić does a fantastic job of giving a concrete, live demonstration of th
 
 So if this is such incredible technology, why is nobody using it? I had thought this initially, before I came to find that, really, **everybody** is using it. It arrived, solved a very important problem, and then kept on solving that problem for the last 40 years. The growing interest in it presently is likely best explained by the increasing need for robust systems at scale and the frequent problems posed by concurrency in other languages, as well as the decline of [Koomey's Law](https://en.wikipedia.org/wiki/Koomey%27s_law) pushing us to reach for parallelisation in search of greater performance gains.
 
-But I digress, I mentioned that **everybody** is using BEAM. Is this true? Well, according to Joe Armstrong ca. **TODO**, Erlang is used in about half of the world's telecoms infrastructure[^erlang-use]. WhatsApp has used Erlang for a very long time[^whatsapp-erl], and Discord is known to get immense value from Elixir[^discord-ex]. They have contributed some great work to the Elixir ecosystem as well, like [Manifold](https://github.com/discord/manifold) and [Semaphore](https://github.com/discord/semaphore). [Fly.io](https://fly.io/), in particular, and their use of [FLAME](https://fly.io/blog/rethinking-serverless-with-flame/) are very exciting (relatively) recent developments.
+But I digress, I mentioned that **everybody** is using BEAM. Is this true? Well, according to Joe Armstrong ca. **TODO**, [Erlang is used in about half of the world's telecoms infrastructure](TODO). [WhatsApp has used Erlang for a very long time](https://www.erlang-solutions.com/blog/20-years-of-open-source-erlang-openerlang-interview-with-anton-lavrik-from-whatsapp/), and [Discord is known to get immense value from Elixir](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/). Discord has contributed some great work to the Elixir ecosystem as well, like [Manifold](https://github.com/discord/manifold) and [Semaphore](https://github.com/discord/semaphore). [Fly.io](https://fly.io/), in particular, and their use of [FLAME](https://fly.io/blog/rethinking-serverless-with-flame/) are very exciting (relatively) recent developments.
 
 On top of this, there are numerous high-quality learning resources developed by core contributors and often even the creators of these languages ranging from learning the languages to learning about their important libraries, designing systems that scale, metaprogramming, and more. The community that has built up around the BEAM is full of experts and a relative wealth of friendliness and dearth of hostility. That being said, if that weren't the case I don't feel it would diminish the value of the technology - it's just a pleasant addition to an already overwhelming number of reasons to appreciate it.
 
@@ -86,11 +86,3 @@ Although some familiarity with Erlang is beneficial no matter which language you
 - elixir's serious growth with phoenix, nerves, nx, livebook
 
 - set-theory based gradual type system
-
-## References
-
-[^erlang-use]: Armstrong, Joe. (TODO). TODO. Strange Loop.
-
-[^whatsapp-erl]: TODO. (TODO). TODO. TODO.
-
-[^discord-ex]: TODO. (TODO). TODO. TODO.
