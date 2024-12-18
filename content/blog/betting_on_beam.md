@@ -52,4 +52,4 @@ fn gleam_example() {
 }
 ```
 
-The value proposition of Gleam is that it uses a static type system with Hindley-Milner style type inference to guarantee certain program invariants at compile-time. This is of course a very nice tool to have in some systems and scenarios. It is not to my liking, however, both in terms of its approach to type safety and syntax.
+The **value proposition** of _Gleam_ is that it uses a static type system with Hindley-Milner style type inference to guarantee certain program invariants at compile-time. This is of course a very nice tool to have in some systems and scenarios. It is not to my liking, however, both in terms of its approach to type safety and syntax.

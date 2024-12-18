@@ -71,6 +71,14 @@ main {
   padding-right: 2rem;
 }
 
+em {
+  color: var(--ctp-peach);
+}
+
+strong {
+  color: var(--ctp-maroon);
+}
+
 footer {
   display: flex;
   flex-direction: row;
