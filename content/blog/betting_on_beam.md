@@ -14,7 +14,7 @@ tags = ["beam", "elixir", "erlang"]
 
 ### What Are We Doing?
 
-**Bogdan/Björn's Erlang Abstract Machine** seems to be something of a sleeper hit in the world of
+**Bogdan/Björn's Erlang Abstract Machine** (BEAM) seems to be something of a sleeper hit in the world of
 information technology. I first came across it through a [Computerphile Video](https://www.youtube.com/watch?v=SOqQVoVai6s) in the beginning of my journey into functional programming. Initially, many of its virtues went over my head. But in time (and with a ravenous addiction to watching talks from [Strange Loop Conferences](https://www.youtube.com/@StrangeLoopConf)) I came across a few talks that shifted my entire perspective on programming after spending some time in the real world of software development.
 
 Initially, I had simply been on a regular Strange Loop binge and stumbled upon [Gerald Sussman](https://en.wikipedia.org/wiki/Gerald_Jay_Sussman)'s talk [We Really Don't Know How to Compute!](https://www.youtube.com/watch?v=HB5TrK7A4pI) As with most things Dr. Sussman has done it completely blew my mind, and it became more pertinent with every passing day as I dealt with information systems riddled with unmitigated decay. That said, the ideas in that talk have a somewhat academic bent (anathema to the industry programmer) and I'm convinced that there are _hordes_ of programmers that spontaneously combust upon seeing an S-expression. Lack of familiarity breeds resentment even in programming languages, I suppose.
@@ -35,7 +35,7 @@ Isolation is the most important of these rules. It enables reliability through i
 
 #### Concurrency
 
-If a system is based on isolated process, it must be able to describe its behaviour in a concurrent manner. Concurrency is desireable because many problems are inherenltly parallel, such as the problem of fault-tolerance! You cannot be fault-tolerant with a single process or even a single computer. If you have to computers, you have a concurrent and distributed system.
+If a system is based on isolated process, it must be able to describe its behaviour in a concurrent manner. Concurrency is desireable because many problems are inherenltly parallel, such as the problem of fault-tolerance! You cannot be fault-tolerant with a single process or even a single computer. If you have two computers, you have a concurrent and distributed system.
 
 #### Failure Detection
 
@@ -51,7 +51,7 @@ Trailing from the previous rule, live code upgrade is necessary to allow systems
 
 #### Stable Storage
 
-Stable storage is not a concern only of the language and runtime, it touches many layers of a system, but the ability to have distributed, stable data is essential for true fault-tolerance. Missing or corrupted data is a rather significant fault in _information_ technology. At one point prior in the talk Joe says the following:
+Stable storage is not a concern only of the language and runtime, it touches many layers of a system, but the ability to have distributed, stable data is essential for true fault-tolerance. Missing or corrupted data (i.e. information) is a rather significant fault in _information_ technology. At one point in the talk Joe says the following:
 
 > "Data is sacred and computation isn't. You really need to look after your data and make sure you never lose it. Computation, that's just stuff that transforms data. If the program crashes just re-run it or something like that; that's not a problem - you can run a computation anywhere, provided you can get hold of the data."
 
@@ -107,7 +107,7 @@ The growth of any of these languages benefits the others due to the interoperabi
 
 Although some familiarity with Erlang is beneficial no matter which language you choose to use (it is the _Erlang_ Abstract Machine, after all), I feel that, upon inspection, Elixir is the clear frontrunner for potential growth and utility over the next decade.
 
-There are several very exciting developments going on in the Elixir ecosystem, from StackOverflow's most-loved web framework for two consecutive years, [Phoenix](https://www.phoenixframework.org/), to the numerical computing project [Nx](https://github.com/elixir-nx) which is rapidly growing the presence of the language in the machine learning and data science space. Nx also includes the amazing [Livebook](https://livebook.dev/), which is something of an analogue to Jupyter Notebook. [Nerves](https://nerves-project.org/) is the final community project that I'll mention here - a framework for creating software for embedded devices. This is exciting for those of us who are usually confined entirely writing to web services or command-line tools but would like to have a familiar environment with which we can learn about embedded programming.
+There are several very exciting developments going on in the Elixir ecosystem, from StackOverflow's most-loved web framework for two consecutive years, [Phoenix](https://www.phoenixframework.org/), to the numerical computing project [Nx](https://github.com/elixir-nx) which is rapidly growing the presence of the language in the machine learning and data science space. Nx also includes the amazing [Livebook](https://livebook.dev/), which is something of an analogue to Jupyter Notebook. [Nerves](https://nerves-project.org/) is the final community project that I'll mention here - a framework for creating software for embedded devices. This is exciting for those of us who are usually confined entirely to writing to web services or command-line tools but would like to have a familiar environment with which we can learn about embedded programming.
 
 There has been a lot of work done by José Valim, Giuseppe Castagna, and Guillaume Duboc in recent years to develop a gradual type system for Elixir, which has resulted in new research on [Set-Theoretic Gradual Types](https://arxiv.org/abs/2306.06391). This has already begun its integration into the Elixir ecosystem, and I believe will serve to improve adoption by programmers who categorically refuse to use dynamically typed languages (beyond the actual concrete value proposition of opt-in compile-time type checking eliminating certain types of errors).
 
