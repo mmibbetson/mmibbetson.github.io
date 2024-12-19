@@ -25,27 +25,45 @@ Fortunately, [Joe Armstrong](<https://en.wikipedia.org/wiki/Joe_Armstrong_(progr
 
 The talk [Systems That Run Forever, Self-Heal, and Scale](https://www.youtube.com/watch?v=cNICGEwmXLU) is one that I consider **essential viewing** for any programmer with the slightest passion for their craft or financial incentive to build fault-tolerant systems.
 
-In this talk, Joe shows how the actor model mirrors parallelism in the real world, considers the difficult problem of distributed data and computation, presents _real solutions_, and expounds on the importance of recoverability and fault-tolerance. For me, the greatest takeaway from this is the following: If you want fault tolerance, _you **must** have distributed systems_.
+In this talk, Joe shows how the actor model mirrors parallelism in the real world, considers the difficult problem of distributed data and computation, presents _real solutions_, and expounds on the importance of recoverability and fault-tolerance. For me, the greatest takeaway from this is the following: If you want fault-tolerance, _you **must** have distributed systems_.
+
+It's not much help for me to just regurgitate points better made by the man himself, so rather than go through each and every bit of information in the talk, I'll just highlight hereafter one particularly important section summarily - what Joe calls the "Six Rules of Fault-Tolerant Systems".
 
 #### Isolation
 
+Isolation is the most important of these rules. It enables reliability through independence of processes, scalability through horizontal expansion, and both testability and comprehesibility through clear boundaries of factorisation.
+
 #### Concurrency
+
+If the system is based on isolated process, it must be able to describe its behaviour in a concurrent manner. Concurrency is desireable because many problems are inherenltly parallel, such as the problem of fault-tolerance! You cannot be fault-tolerant with a single process or even a single computer. If you have to computers, you have a concurrent and distributed system.
 
 #### Failure Detection
 
+Failure is going to happen in any system. Some failures are detectable at compile-time, but a great many aren't. It might be nice to have my type system tell me that my computer is going to be struck by lightning at some point during compile-time but we don't have that ability quite yet, nor would it actually solve the problem. If you can't detect the failure, you can't fix it. This failure detection needs to work across process boundaries, because failed processes can't locally repair themselves.
+
 #### Fault Identification
+
+To properly resolve failures, we have to know why and how they happened, not just _that_ they happened. Proper fault identification implies sufficient information to be used in post hoc debugging of failures, which can be used in live code upgrades to fix running systems.
 
 #### Live Code Upgrade
 
+Trailing from the previous rule, live code upgrade is necessary to allow systems to "run forever". Atomic stop-and-restart is extremely undesireable for distributed systems, and with isolation the idea that we must disable the functioning majority of our processes to triage the faulty few is quite obviously absurd.
+
 #### Stable Storage
 
-Saša Jurić does a fantastic job of giving a concrete, live demonstration of these mechanisms in [The Soul of Erlang and Elixir](https://www.youtube.com/watch?v=JvBT4XBdoUE). Witnessing the scheduler, supervisors, and recoverability in action gives a real sense for how transformative this model is for real-world systems.
+Stable storage is not a concern only of the language and runtime, it touches many layers of a system, but the ability to have distributed, stable data is essential for true fault-tolerance. Missing or corrupted data is a rather significant fault in _information_ technology. At one point prior in the talk Joe says the following:
+
+> "Data is sacred and computation isn't. You really need to look after your data and make sure you never lose it. Computation, that's just stuff that transforms data. If the program crashes just re-run it or something like that; that's not a problem - you can run a computation anywhere, provided you can get hold of the data."
+
+### What Does This Actually Look Like?
+
+Although this is all terribly relevant to anyone working with distributed systems today, it's still a little bit inconcrete in that it's a conversation about the technology and not a direct demonstration of the technology itself. Much of the time these things don't fully _'click'_ for us until we see them in action. Saša Jurić does a fantastic job of giving a concrete, live demonstration of these mechanisms in [The Soul of Erlang and Elixir](https://www.youtube.com/watch?v=JvBT4XBdoUE). Witnessing the scheduler, supervisors, and recoverability in action gives a real sense for how transformative this model is for real-world systems.
 
 ## Finding Footholds
 
 So if this is such incredible technology, why is nobody using it? I had thought this initially, before I came to find that, really, **everybody** is using it. It arrived, solved a very important problem, and then kept on solving that problem for the last 40 years. The growing interest in it presently is likely best explained by the increasing need for robust systems at scale and the frequent problems posed by concurrency in other languages, as well as the decline of [Koomey's Law](https://en.wikipedia.org/wiki/Koomey%27s_law) pushing us to reach for parallelisation in search of greater performance gains.
 
-But I digress, I mentioned that **everybody** is using the BEAM. Is this true? Well, according to Joe Armstrong ca. 2013, [Erlang is used in about half of the world's telecoms infrastructure](https://www.youtube.com/watch?v=cNICGEwmXLU&t=600s). [WhatsApp](https://www.erlang-solutions.com/blog/20-years-of-open-source-erlang-openerlang-interview-with-anton-lavrik-from-whatsapp/) has used Erlang for a very long time, and [Discord](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) is known to get immense value from Elixir. Discord has contributed some great work to the Elixir ecosystem as well, like [Manifold](https://github.com/discord/manifold) and [Semaphore](https://github.com/discord/semaphore). [Fly.io](https://fly.io/), in particular, and their use of [FLAME](https://fly.io/blog/rethinking-serverless-with-flame/) are very exciting (relatively) recent developments.
+But I digress, I mentioned that **everybody** is using the BEAM. Is this true? Well, according to Joe Armstrong ca. 2013, Erlang is used in about [half of the world's telecoms infrastructure](https://www.youtube.com/watch?v=cNICGEwmXLU&t=600s). [WhatsApp](https://www.erlang-solutions.com/blog/20-years-of-open-source-erlang-openerlang-interview-with-anton-lavrik-from-whatsapp/) has used Erlang for a very long time, and [Discord](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) is known to get immense value from Elixir. Discord has contributed some great work to the Elixir ecosystem as well, like [Manifold](https://github.com/discord/manifold) and [Semaphore](https://github.com/discord/semaphore). [Fly.io](https://fly.io/), in particular, and their use of [FLAME](https://fly.io/blog/rethinking-serverless-with-flame/) are very exciting (relatively) recent developments.
 
 On top of this, there are numerous high-quality learning resources developed by core contributors and often even the creators of these languages ranging from learning the languages to learning about their important libraries, designing systems that scale, metaprogramming, and more. The community that has built up around the BEAM is full of experts and a relative wealth of friendliness and dearth of hostility. That being said, if that weren't the case I don't feel it would diminish the value of the technology - it's just a pleasant addition to an already overwhelming number of reasons to appreciate it.
 
@@ -93,7 +111,7 @@ There are several very exciting developments going on in the Elixir ecosystem, f
 
 There has been a lot of work done by José Valim, Giuseppe Castagna, and Guillaume Dubc in recent years to develop a gradual type system for Elixir, which has resulted in new research on [Set-Theoretic Gradual Types](https://arxiv.org/abs/2306.06391). This has already begun its integration into the Elixir ecosystem, and I believe will serve to improve adoption by programmers who categorically refuse to use dynamically typed languages (beyond the actual concrete value proposition of opt-in compile-time type checking eliminating certain types of errors).
 
-## Don't Look Down
+## Do Not Look Down
 
 The adage that there is _"No silver bullet"_ is perhaps second in frequency only to variations of object-oriented programming (in the C++ tradition) sloganeering about **SOLID** principles or **DRY** or what-have-you. And it is, of course, true that we have no tools which solve _every_ problem. In fact, we have many tools which solve no problem at all. But Erlang was created to solve a _particular_ problem: distributed programming. As it so happens, most programming today involves distributed systems.
 
@@ -113,8 +131,8 @@ Another trade-off made when working with the BEAM is that it aims to achieve "so
 
 The cost-benefit analysis becomes less grim when considering that, generally, performance constraints on the kinds of single-threaded, synchronous programs written in high-level languages are effectively inconsequential. If we can glue our operating systems together with Python, there's certainly no need to fear the performance of Elixir in these contexts.
 
-Additionally, in the domain these languages are designed for, they look far more appealing next to their competitors. Benchmarks in general are difficult to run well, and even more difficult to trust. That said, if you've the time and curiosity, [this article](https://www.erlang-solutions.com/blog/comparing-elixir-vs-java/) demonstrates the broad comparison of a BEAM language against a non-BEAM language in a context that is relevant (network-bound, mixed-workload, concurrent systems).
+Additionally, in the domain these languages are designed for, they look far more appealing next to their competitors. Benchmarks in general are difficult to run well, and even more difficult to trust. That said, if you've the time and curiosity, [this article](https://www.erlang-solutions.com/blog/comparing-elixir-vs-java/) demonstrates the broad comparison of a BEAM language against a non-BEAM language in a context that is relevant (network-bound, mixed-workload, concurrent systems). In time I imagine that the [aforementioned decline](#finding-footholds) of Koomey's Law will play a role in seeing languages which parallelise processes more easily become more performant in ways others can't.
 
 ## Summit
 
-If you'll excuse the irony of closing with a variation on an aphorism after the smug first paragraph of the previous section, one might say that ["Every sufficiently complicated distributed program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of the BEAM."](https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule)
+If you'll excuse the irony of closing with a variation on an aphorism after the smug first paragraph of the [previous section](#do-not-look-down), one might say that ["Every sufficiently complicated distributed program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of the BEAM."](https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule)
