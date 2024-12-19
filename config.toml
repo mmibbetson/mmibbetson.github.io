@@ -140,7 +140,7 @@ external_level = "error"
 # Various slugification strategies, see below for details
 # Defaults to everything being a slug
 [slugify]
-paths = "on"
+paths = "safe"
 taxonomies = "on"
 anchors = "on"
 # Whether to remove date prefixes for page path slugs.
