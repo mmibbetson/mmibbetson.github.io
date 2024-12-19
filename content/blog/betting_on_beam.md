@@ -1,5 +1,5 @@
 +++
-title       = "Betting on the BEAM"
+title       = "Betting on BEAM"
 date        = 2024-12-17
 description = """
 Bogdan/Björn's Erlang Abstract Machine has been called the "soul of Erlang and Elixir." In this post 
@@ -35,7 +35,7 @@ Isolation is the most important of these rules. It enables reliability through i
 
 #### Concurrency
 
-If the system is based on isolated process, it must be able to describe its behaviour in a concurrent manner. Concurrency is desireable because many problems are inherenltly parallel, such as the problem of fault-tolerance! You cannot be fault-tolerant with a single process or even a single computer. If you have to computers, you have a concurrent and distributed system.
+If a system is based on isolated process, it must be able to describe its behaviour in a concurrent manner. Concurrency is desireable because many problems are inherenltly parallel, such as the problem of fault-tolerance! You cannot be fault-tolerant with a single process or even a single computer. If you have to computers, you have a concurrent and distributed system.
 
 #### Failure Detection
 
@@ -109,7 +109,7 @@ Although some familiarity with Erlang is beneficial no matter which language you
 
 There are several very exciting developments going on in the Elixir ecosystem, from StackOverflow's most-loved web framework for two consecutive years, [Phoenix](https://www.phoenixframework.org/), to the numerical computing project [Nx](https://github.com/elixir-nx) which is rapidly growing the presence of the language in the machine learning and data science space. Nx also includes the amazing [Livebook](https://livebook.dev/), which is something of an analogue to Jupyter Notebook. [Nerves](https://nerves-project.org/) is the final community project that I'll mention here - a framework for creating software for embedded devices. This is exciting for those of us who are usually confined entirely writing to web services or command-line tools but would like to have a familiar environment with which we can learn about embedded programming.
 
-There has been a lot of work done by José Valim, Giuseppe Castagna, and Guillaume Dubc in recent years to develop a gradual type system for Elixir, which has resulted in new research on [Set-Theoretic Gradual Types](https://arxiv.org/abs/2306.06391). This has already begun its integration into the Elixir ecosystem, and I believe will serve to improve adoption by programmers who categorically refuse to use dynamically typed languages (beyond the actual concrete value proposition of opt-in compile-time type checking eliminating certain types of errors).
+There has been a lot of work done by José Valim, Giuseppe Castagna, and Guillaume Duboc in recent years to develop a gradual type system for Elixir, which has resulted in new research on [Set-Theoretic Gradual Types](https://arxiv.org/abs/2306.06391). This has already begun its integration into the Elixir ecosystem, and I believe will serve to improve adoption by programmers who categorically refuse to use dynamically typed languages (beyond the actual concrete value proposition of opt-in compile-time type checking eliminating certain types of errors).
 
 ## Do Not Look Down
 
