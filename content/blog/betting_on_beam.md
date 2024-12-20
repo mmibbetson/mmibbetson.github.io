@@ -2,9 +2,9 @@
 title       = "Betting on BEAM"
 date        = 2024-12-17
 description = """
-Bogdan/Björn's Erlang Abstract Machine has been called the "soul of Erlang and Elixir." In this post 
-I discuss how and why I will be investing my time into working with the BEAM for building
-information systems that make sense.
+Bogdan/Björn's Erlang Abstract Machine is the virtual machine for Erlang, Elixir, LFE, and Gleam.
+It's also an historic piece of engineering with so much to teach about concurrency, parallelism,
+fault tolerance, and distribution.
 """
 [taxonomies]
 tags = ["beam", "elixir", "erlang"]
@@ -16,13 +16,13 @@ tags = ["beam", "elixir", "erlang"]
 
 **Bogdan/Björn's Erlang Abstract Machine** (BEAM) is the virtual machine that powers the Erlang and Elixir programming languages, among others. I first came across it through a [Computerphile Video](https://www.youtube.com/watch?v=SOqQVoVai6s) at the beginning of my journey into functional programming. Initially, many of its virtues went over my head. But in time (and with a ravenous addiction to watching talks from [Strange Loop Conferences](https://www.youtube.com/@StrangeLoopConf)) I came across a few talks that shifted my entire perspective on programming after spending some time in the real world of software development.
 
-Eventually, I stumbled onto [Joe Armstrong](<https://en.wikipedia.org/wiki/Joe_Armstrong_(programmer)>)'s talk called [The Mess We're In](https://www.youtube.com/watch?v=lKXe3HUG2l4). Joe was one of the co-creators of Erlang, and this talk, I feel, illustrates the relevance of its concerns around the dire state of modern computer programs to modern computer programmers very effectively. He uses his background in physics and his depth of experience in programming to discuss mainstay computing concerns such as performance, complexity, documentation, and so on, while consistently injecting both humorous and enlightening insights at every turn. I was so taken by this talk that I felt I had to see more from him, and this is when things really changed for me.
+It was [Joe Armstrong](<https://en.wikipedia.org/wiki/Joe_Armstrong_(programmer)>)'s talk called [The Mess We're In](https://www.youtube.com/watch?v=lKXe3HUG2l4) which first had a hand in this shift. Joe was one of the co-creators of Erlang, and this talk, I feel, illustrates the relevance of its concerns around the dire state of modern computer programs to modern computer programmers very effectively. He uses his background in physics and his depth of experience in programming to discuss mainstay computing concerns such as performance, complexity, documentation, and so on, while consistently injecting both humorous and enlightening insights at every turn. I was so taken by this talk that I felt I had to see more from him, and this is when things really changed for me.
 
 ### Systems That Run Forever
 
 The talk [Systems That Run Forever, Self-Heal, and Scale](https://www.youtube.com/watch?v=cNICGEwmXLU) is one that I consider **essential viewing** for any programmer with the slightest passion for their craft or financial incentive to build fault tolerant systems.
 
-In this talk, Joe shows how the actor model mirrors parallelism in the real world, considers the difficult problem of distributed data and computation, presents _real solutions_, and expounds on the importance of recoverability and fault tolerance. For me, the greatest takeaway from this is the following: If you want fault tolerance, _you **must** have distributed systems_.
+In this talk, Joe shows how the actor model mirrors parallelism in the real world, considers the difficult problem of distributed data and computation, presents _real solutions_, and expounds on the importance of recoverability and fault tolerance. For me, the greatest takeaway from this is the following: If you want fault tolerance, _you **must** have distributed systems_. This is because you can't have fault tolerance on a single machine - what happens if that machine breaks? Forces beyond the programs we write can take down our infrastructure at any moment. Therefore, we require redundancy as a protection against failure. As soon as we have two machines, we have a concurrent, distributed program.
 
 It's not much help for me to just regurgitate points better made by the man himself, so rather than go through each and every bit of information in the talk, I'll just highlight hereafter one particularly important section summarily - what Joe calls the "Six Rules of Wault Tolerant Systems".
 
@@ -32,7 +32,7 @@ Isolation is the most important of these rules. It enables reliability through t
 
 #### Concurrency
 
-If a system is based on isolated process, it must be able to describe its behaviour in a concurrent manner. Concurrency is desirable because many problems are inherently parallel, such as the problem of fault tolerance! You cannot be fault tolerant with a single process or even a single computer. If you have two computers, you have a concurrent and distributed system.
+If a system is based on isolated process, it must necessarily be able to describe its behaviour in a concurrent manner as those processes carry out their individual functions. Concurrency is desirable because many problems are inherently parallel, such as the problem of fault tolerance requiring multiple machines discussed earlier.
 
 #### Failure Detection
 
@@ -48,7 +48,7 @@ Trailing from the previous rule, live code upgrade is necessary to allow systems
 
 #### Stable Storage
 
-Stable storage is not a concern only of the language and runtime, it touches many layers of a system, but the ability to have distributed, stable data is essential for true fault tolerance. Missing or corrupted data (i.e. information) is a rather significant fault in _information_ technology. At one point in the talk, Joe says the following:
+Stable storage is not a concern only of the language and runtime, it touches many layers of a system, but the ability to have distributed, stable data is essential for true fault tolerance. Missing or corrupted data (i.e. information) is a rather significant problem in _information_ technology. At one point in the talk, Joe says the following:
 
 > "Data is sacred and computation isn't. You really need to look after your data and make sure you never lose it. Computation, that's just stuff that transforms data. If the program crashes just re-run it or something like that; that's not a problem - you can run a computation anywhere, provided you can get hold of the data."
 
@@ -58,7 +58,9 @@ Although this is all terribly relevant to anyone working with distributed system
 
 ## Finding Footholds
 
-So if this is such incredible technology, why is nobody using it? I had thought this initially, before I came to find that, really, **everybody** is using it. It arrived, solved a very important problem, and then kept on quietly solving that problem for the last 40 years. The growing vocal interest in it presently is likely best explained by the increasing need for robust systems at scale and the frequent problems posed by concurrency in other languages, as well as the decline of [Koomey's Law](https://en.wikipedia.org/wiki/Koomey%27s_law) pushing us to reach for parallelisation in search of greater performance gains.
+> "So if this is such incredible technology, why is nobody using it?"
+
+I had thought this initially, before I came to learn that, really, _practically everybody_ is using it. It arrived, solved a very important problem, and then kept on quietly solving that problem for the last 40 years. The growing vocal interest in it presently is likely best explained by the increasing need for robust systems at scale and the frequent problems posed by concurrency in other languages, as well as the decline of [Koomey's Law](https://en.wikipedia.org/wiki/Koomey%27s_law) pushing us to reach for parallelisation in search of greater performance gains.
 
 But I digress, I mentioned that everybody is using the BEAM. Is this true? Well, according to Joe Armstrong ca. 2013, Erlang is used in about [half of the world's telecoms infrastructure](https://www.youtube.com/watch?v=cNICGEwmXLU&t=600s). [WhatsApp](https://www.erlang-solutions.com/blog/20-years-of-open-source-erlang-openerlang-interview-with-anton-lavrik-from-whatsapp/) has used Erlang for a very long time, and [Discord](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) is known to get immense value from Elixir. Discord has contributed some great work to the Elixir ecosystem as well, like [Manifold](https://github.com/discord/manifold) and [Semaphore](https://github.com/discord/semaphore). [Fly.io](https://fly.io/), in particular, and their use of [FLAME](https://fly.io/blog/rethinking-serverless-with-flame/) are very exciting (relatively) recent developments.
 
@@ -110,26 +112,26 @@ There has been a lot of work done by José Valim, Giuseppe Castagna, and Guillau
 
 ## Do Not Look Down
 
-The adage that there is _"No silver bullet"_ is perhaps second in frequency only to sloganeering about **SOLID** principles or **DRY**, but it's true that we have no tools that solve _every_ problem. In fact, we have many tools which solve no problem at all. Erlang was created to solve a _particular_ problem: distributed programming; as it so happens, most programming today involves distributed systems.
+The adage that there is _"No silver bullet"_ is among the most frequently espoused programmer heuristics, and it's true that we have no tools that solve _every_ problem. In fact, we have many tools which solve no problem at all. Erlang was created to solve a _particular_ problem: distributed programming; as it so happens, most programming today involves distributed systems.
 
-It turns out that you can squeeze a lot of performance and faux-simplicity from programs that ignore the benefits of distributed programming, much like making simplifying assumptions aids the clarity and conciseness of scientific or mathematical proofs (at the expense of correctness and comprehensiveness). Sometimes this is an acceptable, or (much more rarely) necessary exchange.
-
-Instead of leveraging the BEAM, though, we default to bolting its features onto our programs with disparate tools that require generous application of duct-tape-YAML to keep the plumbing from leaking sewage onto our floors.
-
-### It's All About Popular
-
-Fashion has been an ever-fickle guiding hand in programming history since its inception, with just as much power as any meritocratic assessment of technologies, if not more. One trade-off of BEAM languages is that by comparison to other programming language communities like Python, JavaScript, and so on, the ecosystem is rather small. It's not terribly small, though - you'd have an easier time finding an Elixir programmer than a [Janet](https://janet-lang.org/) programmer. The oft-cited "friendly syntax" of Elixir goes a long way in amplifying learner enthusiasm and there is even an [entire book](https://pragprog.com/titles/tvmelixir/adopting-elixir/) on the process of adopting the language and onboarding teams.
-
-With the consistent growth Elixir is experiencing and the large existing footprint Erlang has in the industry, I don't feel that this concern holds up to much scrutiny unless you believe that your coworkers or employees are utterly incapable of learning new things. If that _is_ the case, I recommend finding a new job or hiring new employees.
+When considering the proverbial impurities in the BEAM's metal, it turns out that you can squeeze a lot of performance and comfort from programming languages that ignore the central concerns of distributed programming, much like making simplifying assumptions can aid the clarity and conciseness of scientific or mathematical proofs at the expense of correctness and comprehensiveness. Sometimes this is an acceptable, or (more rarely) necessary exchange. This means that the BEAM is neither the most performant nor the most popular environment.
 
 ### Soft-Real-Time
 
-Another trade-off made when working with the BEAM is that it aims to achieve "soft-real-time" performance. It's not suited to real-time programs the way Rust is, for example. There is overhead to its runtime behaviour and the garbage collection mechanism. Because much of this overhead is designed to tolerate large-scale systems, there is an efficiency loss in scaling down to single-process environments where other garbage-collected languages will sometimes outperform Elixir or Erlang. I shudder to imagine the conclusions drawn from comparing LeetCode performance benchmarks between Elixir and JavaScript.
+A performance goal of the BEAM is that it aims to achieve "soft-real-time" performance. It's not suited to hard-real-time programs the way Rust is, for example. There is a cost to its concurrency semantics, low as it is, and it is a garbage-collected runtime. Because much of this overhead is designed to tolerate large-scale systems, there is an efficiency loss in scaling down to single-process environments where other garbage-collected languages will sometimes outperform Elixir or Erlang.
 
 The cost-benefit analysis becomes less grim when considering that, generally, performance constraints on the kinds of single-threaded, synchronous programs written in high-level languages are effectively inconsequential. If we can glue our operating systems together with Python, there's certainly no need to fear the performance of Elixir in these contexts.
 
 Additionally, in the domain these languages are designed for, they look far more appealing next to their competitors. Benchmarks, in general, are difficult to run well, and even more difficult to trust. That said, if you have the time and curiosity, [this article](https://www.erlang-solutions.com/blog/comparing-elixir-vs-java/) demonstrates the broad comparison of a BEAM language against a non-BEAM language in a context that is relevant (network-bound, mixed-workload, concurrent systems). In the future, I imagine that the [aforementioned decline](#finding-footholds) of Koomey's Law will play a role in seeing languages which parallelise processes more easily become more performant in ways others can't.
 
+### It's All About Popular
+
+Fashion has been an ever-fickle guiding hand in programming history since its inception, with just as much power as any meritocratic assessment of technologies, if not more. BEAM languages, by comparison to other programming language communities like Python, JavaScript, and so on, have a smaller ecosystem. It's not terribly small, though - you'd have an easier time finding an Elixir programmer than, say, a [Janet](https://janet-lang.org/) programmer. The oft-cited "friendly syntax" of Elixir goes a long way in amplifying learner enthusiasm and there is even an [entire book](https://pragprog.com/titles/tvmelixir/adopting-elixir/) on the process of adopting the language and onboarding teams.
+
+With the current growth Elixir is experiencing and the large existing role Erlang has in the computing and telecommunications industries, I don't feel that this concern holds up to scrutiny unless it is absolutely _essential_ that you work with only the most fashionable languages. There are circumstances where this might genuinely be the case, but I am doubtful that it is the majority of situations.
+
 ## Summit
 
-If you'll excuse the irony of closing with a variation on an aphorism after the snarky first paragraph of the [previous section](#do-not-look-down), one might say that ["Every sufficiently complicated distributed program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of the BEAM."](https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule)
+There's so much more to be said about the BEAM, Erlang, Elixir, all of the amazing open source work being done with them, and the historical significance of their contribution to human communication. Far more than could reasonably be covered here. I feel so convinced of its importance and its very necessary place in the kinds of programs we write today, that I'm compelled to end on a variation of [Greenspun's Tenth Law](https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule) when considering how we often try to replicate the benefits of the BEAM by duct-taping various external tools to together with YAML and bolting the resulting behemoth onto our programs:
+
+> "Every sufficiently complicated distributed program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of the BEAM."
