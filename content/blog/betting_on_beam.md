@@ -1,6 +1,6 @@
 +++
 title       = "Betting on BEAM"
-date        = 2024-12-17
+date        = 2024-12-20
 description = """
 Bogdan/Björn's Erlang Abstract Machine is the virtual machine for Erlang, Elixir, LFE, and Gleam.
 It's also an historic piece of engineering with so much to teach about concurrency, parallelism,
