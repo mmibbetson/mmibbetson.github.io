@@ -24,7 +24,7 @@ The talk [Systems That Run Forever, Self-Heal, and Scale](https://www.youtube.co
 
 In this talk, Joe shows how the actor model mirrors parallelism in the real world, considers the difficult problem of distributed data and computation, presents _real solutions_, and expounds on the importance of recoverability and fault tolerance. For me, the greatest takeaway from this is the following: If you want fault tolerance, _you **must** have distributed systems_. This is because you can't have fault tolerance on a single machine - what happens if that machine breaks? Forces beyond the programs we write can take down our infrastructure at any moment. Therefore, we require redundancy as a protection against failure. As soon as we have two machines, we have a concurrent, distributed program.
 
-It's not much help for me to just regurgitate points better made by the man himself, so rather than go through each and every bit of information in the talk, I'll just highlight hereafter one particularly important section summarily - what Joe calls the "Six Rules of Wault Tolerant Systems".
+It's not much help for me to just regurgitate points better made by the man himself, so rather than go through each and every bit of information in the talk, I'll just highlight hereafter one particularly important section summarily - what Joe calls the "Six Rules of Fault Tolerant Systems".
 
 #### Isolation
 
@@ -62,9 +62,9 @@ Although this is all terribly relevant to anyone working with distributed system
 
 I had thought this initially, before I came to learn that, really, _practically everybody_ is using it. It arrived, solved a very important problem, and then kept on quietly solving that problem for the last 30+ years. The growing vocal interest in it presently is likely best explained by the increasing need for robust systems at scale and the frequent problems posed by concurrency in other languages, as well as the decline of [Koomey's Law](https://en.wikipedia.org/wiki/Koomey%27s_law) pushing us to reach for parallelisation in search of greater performance gains.
 
-But I digress, I mentioned that everybody is using the BEAM. Is this true? Well, according to Joe Armstrong ca. 2013, Erlang is used in about [half of the world's telecoms infrastructure](https://www.youtube.com/watch?v=cNICGEwmXLU&t=600s). [WhatsApp](https://www.erlang-solutions.com/blog/20-years-of-open-source-erlang-openerlang-interview-with-anton-lavrik-from-whatsapp/) has used Erlang for a very long time, and [Discord](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) is known to get immense value from Elixir. Discord has contributed some great work to the Elixir ecosystem as well, like [Manifold](https://github.com/discord/manifold) and [Semaphore](https://github.com/discord/semaphore). [Fly.io](https://fly.io/), in particular, and their use of [FLAME](https://fly.io/blog/rethinking-serverless-with-flame/) are very exciting (relatively) recent developments.
+But I digress, I mentioned that everybody is using BEAM. Is this true? Well, according to Joe Armstrong ca. 2013, Erlang is used in about [half of the world's telecoms infrastructure](https://www.youtube.com/watch?v=cNICGEwmXLU&t=600s). [WhatsApp](https://www.erlang-solutions.com/blog/20-years-of-open-source-erlang-openerlang-interview-with-anton-lavrik-from-whatsapp/) has used Erlang for a very long time, and [Discord](https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/) is known to get immense value from Elixir. Discord has contributed some great work to the Elixir ecosystem as well, like [Manifold](https://github.com/discord/manifold) and [Semaphore](https://github.com/discord/semaphore). [Fly.io](https://fly.io/), in particular, and their use of [FLAME](https://fly.io/blog/rethinking-serverless-with-flame/) are very exciting (relatively) recent developments.
 
-On top of this, there are numerous high-quality learning resources developed by core contributors and often even the creators of these languages ranging from learning the languages to learning about their important libraries, designing systems that scale, metaprogramming, and more. The community that has built up around the BEAM is full of experts and an oasis of friendliness in the metaphorical desert that is programming language discourse. That being said, if that weren't the case I don't feel it would diminish the value of the technology - it's just a pleasant addition to an already overwhelming number of reasons to appreciate it.
+On top of this, there are numerous high-quality learning resources developed by core contributors and often even the creators of these languages ranging from learning the languages to learning about their important libraries, designing systems that scale, metaprogramming, and more. The community that has built up around BEAM is full of experts and an oasis of friendliness in the metaphorical desert that is programming language discourse. That being said, if that weren't the case I don't feel it would diminish the value of the technology - it's just a pleasant addition to an already overwhelming number of reasons to appreciate it.
 
 ### BEAM Languages
 
@@ -92,7 +92,7 @@ If you do not burst into flame in the vicinity of S-expressions and enjoy workin
   (io:format "Hello world!~n"))
 ```
 
-For people who crave C-style braces or feel a need for static types, there's also _[Gleam](https://gleam.run/)_ which layers Rust's syntax onto SML/OCaml/F#'s semantics (bar currying-by-default) and the BEAM's execution model:
+For people who crave C-style braces or feel a need for static types, there's also _[Gleam](https://gleam.run/)_ which layers Rust's syntax onto SML/OCaml/F#'s semantics (bar currying-by-default) and BEAM's execution model:
 
 ```rust
 fn hello_world() {
@@ -114,11 +114,11 @@ There has been a lot of work done by José Valim, Giuseppe Castagna, and Guillau
 
 The adage that there is _"No silver bullet"_ is among the most frequently espoused programmer heuristics, and it's true that we have no tools that solve _every_ problem. In fact, we have many tools which solve no problem at all. Erlang was created to solve a _particular_ problem: distributed programming; as it so happens, most programming today involves distributed systems.
 
-When considering the proverbial impurities in the BEAM's metal, it turns out that you can squeeze a lot of performance and comfort from programming languages that ignore the central concerns of distributed programming, much like making simplifying assumptions can aid the clarity and conciseness of scientific or mathematical proofs at the expense of correctness and comprehensiveness. Sometimes this is an acceptable, or (more rarely) necessary exchange. This means that the BEAM is neither the most performant nor the most popular environment.
+When considering the proverbial impurities in BEAM's metal, it turns out that you can squeeze a lot of performance and comfort from programming languages that ignore the central concerns of distributed programming, much like making simplifying assumptions can aid the clarity and conciseness of scientific or mathematical proofs at the expense of correctness and comprehensiveness. Sometimes this is an acceptable, or (more rarely) necessary exchange. This means that BEAM is neither the most performant nor the most popular environment.
 
 ### Soft-Real-Time
 
-A performance goal of the BEAM is that it aims to achieve "soft-real-time" performance. It's not suited to hard-real-time programs the way Rust is, for example. There is a cost to its concurrency semantics, low as it is, and it is a garbage-collected runtime. Because much of this overhead is designed to tolerate large-scale systems, there is an efficiency loss in scaling down to single-process environments where other garbage-collected languages will sometimes outperform Elixir or Erlang.
+A performance goal of BEAM is that it aims to achieve "soft-real-time" performance. It's not suited to hard-real-time programs the way Rust is, for example. There is a cost to its concurrency semantics, low as it is, and it is a garbage-collected runtime. Because much of this overhead is designed to tolerate large-scale systems, there is an efficiency loss in scaling down to single-process environments where other garbage-collected languages will sometimes outperform Elixir or Erlang.
 
 The cost-benefit analysis becomes less grim when considering that, generally, performance constraints on the kinds of single-threaded, synchronous programs written in high-level languages are effectively inconsequential. If we can glue our operating systems together with Python, there's certainly no need to fear the performance of Elixir in these contexts.
 
@@ -132,6 +132,6 @@ With the current growth Elixir is experiencing and the large existing role Erlan
 
 ## Summit
 
-There's so much more to be said about the BEAM, Erlang, Elixir, all of the amazing open source work being done with them, and the historical significance of their contribution to human communication. Far more than could reasonably be covered here. I feel so convinced of its importance and its very necessary place in the kinds of programs we write today, that I'm compelled to end on a variation of [Greenspun's Tenth Law](https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule) when considering how we often try to replicate the benefits of the BEAM by duct-taping various external tools to together with YAML and bolting the resulting behemoth onto our programs:
+There's so much more to be said about BEAM, Erlang, Elixir, all of the amazing open source work being done with them, and the historical significance of their contribution to human communication. Far more than could reasonably be covered here. I feel so convinced of its importance and its very necessary place in the kinds of programs we write today, that I'm compelled to end on a variation of [Greenspun's Tenth Law](https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule) when considering how we often try to replicate the benefits of BEAM by duct-taping various external tools to together with YAML and bolting the resulting behemoth onto our programs:
 
-> "Every sufficiently complicated distributed program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of the BEAM."
+> "Every sufficiently complicated distributed program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of BEAM."
