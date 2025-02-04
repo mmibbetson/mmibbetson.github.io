@@ -1,5 +1,5 @@
 +++
-title = "Posts"
+title = "Blog"
 description = """
 All of my blog posts, both short- and long-form.
 """

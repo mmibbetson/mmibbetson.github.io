@@ -25,9 +25,9 @@ dn new --title foo --keywords example --extension dj
 Because of the naming scheme's regularity, many other shell tools like [ripgrep](https://github.com/BurntSushi/ripgrep) and [fzf](https://junegunn.github.io/fzf/) can be used to build a personalised note-taking or file-organisation workflow.
 
 ```sh
-# Search current directory for files with the keyword "foo" with fzf 
+# Search notes directory for files with fzf 
 # and open the chosen file in neovim.
-rg --files *_foo* | fzf | xargs nvim
+rg $DN_DIRECTORY --files | fzf | xargs hx
 ```
 
 ## Features
