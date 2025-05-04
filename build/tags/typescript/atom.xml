@@ -20,10 +20,10 @@
           </name>
         </author>
         
-        <link rel="alternate" type="text/html" href="https://mmibbetson.github.io/blog/whats-in-a-function/"/>
-        <id>https://mmibbetson.github.io/blog/whats-in-a-function/</id>
+        <link rel="alternate" type="text/html" href="https://mmibbetson.github.io/blog/whats-in-a-function-signature/"/>
+        <id>https://mmibbetson.github.io/blog/whats-in-a-function-signature/</id>
         
-        <content type="html" xml:base="https://mmibbetson.github.io/blog/whats-in-a-function/">&lt;h2 id=&quot;the-dotted-line&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-dotted-line&quot; aria-label=&quot;Anchor link for: the-dotted-line&quot;&gt;The Dotted Line&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+        <content type="html" xml:base="https://mmibbetson.github.io/blog/whats-in-a-function-signature/">&lt;h2 id=&quot;the-dotted-line&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-dotted-line&quot; aria-label=&quot;Anchor link for: the-dotted-line&quot;&gt;The Dotted Line&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
 &lt;p&gt;A function (or method) signature, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Glossary&#x2F;Signature&#x2F;Function&quot;&gt;according to MDN Web
 Docs&lt;&#x2F;a&gt;,
 “defines input and output” of a function or method. It can include
