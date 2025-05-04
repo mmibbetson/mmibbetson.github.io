@@ -8,7 +8,7 @@ Function signatures are the boundaries of the layers of abstraction in software.
 tags = ["rust", "javascript", "typescript"]
 +++
 
-## What’s in a Function Signature?
+## The Dotted Line
 
 A function (or method) signature, [according to MDN Web
 Docs](https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function),

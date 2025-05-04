@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>λm.m</title>
+  <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css"
+    integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous" />
+  <script type="module">
+    import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.mjs";
+    renderMathInElement(document.body, {
+      // customised options
+      // • auto-render specific keys, e.g.:
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+      ],
+      // • rendering keys, e.g.:
+      throwOnError: false,
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <div id="header-banner">
+      <h1 id="site-title"><a href="/" class="home-link">λm.m</a></h1>
+      <nav>
+        <ul id="nav-list">
+          <a class="nav-item nav-link" href="/tags">/tags</a>
+          <a class="nav-item nav-link" href="/art">/art</a>
+          <a class="nav-item nav-link" href="/blog">/blog</a>
+          <a class="nav-item nav-link" href="/software">/software</a>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+<h1 id="content-list-title">elixir</h1>
+<hr class="title-underline" />
+
+<div class="content-listing">
+  <a href="https://mmibbetson.github.io/blog/betting_on_beam/" class="blog-card">
+    <h3 class="blog-card-title decorated-link">Betting on BEAM</h3>
+    <span class="blog-card-date">2024-12-20</span>
+    <p class="blog-card-description">Bogdan/Björn's Erlang Abstract Machine is the virtual machine for Erlang, Elixir, LFE, and Gleam.
+It's also an historic piece of engineering with so much to teach about concurrency, parallelism,
+fault tolerance, and distribution.
+</p>
+  </a>
+</div>
+</main>
+
+  <footer>
+    <span class="line">© 2024 Matthew Mark Ibbetson,&nbsp;</span>
+    <span class="line">
+      Content
+      <a href="/license/CC-BY-NC-SA-4.0.txt" class="decorated-link">CC-BY-NC-SA-4.0</a>
+      ,&nbsp;
+    </span>
+    <span class="line">
+      <a href="https://github.com/mmibbetson/mmibbetson.github.io" class="decorated-link">Source Code</a>
+      <a href="/license/AGPL-3.0-or-later.txt" class="decorated-link">AGPL-3.0-or-later</a>
+    </span>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Lambdaaa - rust</title>
+    <subtitle>Personal blog site for mmibbetson</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mmibbetson.github.io/tags/rust/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mmibbetson.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-05-04T00:00:00+00:00</updated>
+    <id>https://mmibbetson.github.io/tags/rust/atom.xml</id>
+    <entry xml:lang="en">
+        <title>What&#x27;s in a Function Signature?</title>
+        <published>2025-05-04T00:00:00+00:00</published>
+        <updated>2025-05-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Matthew Mark Ibbetson
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mmibbetson.github.io/blog/whats-in-a-function/"/>
+        <id>https://mmibbetson.github.io/blog/whats-in-a-function/</id>
+        
+        <content type="html" xml:base="https://mmibbetson.github.io/blog/whats-in-a-function/">&lt;h2 id=&quot;the-dotted-line&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-dotted-line&quot; aria-label=&quot;Anchor link for: the-dotted-line&quot;&gt;The Dotted Line&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;A function (or method) signature, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Glossary&#x2F;Signature&#x2F;Function&quot;&gt;according to MDN Web
+Docs&lt;&#x2F;a&gt;,
+“defines input and output” of a function or method. It can include
+parameters, return values, types for said paramters and return values,
+possible exceptions or errors, and accessiblity information (i.e. in
+what scope(s) the function can be accessed). Most languages meet this
+definition with some combination of these features; some languages have
+additional features as well.&lt;&#x2F;p&gt;
+&lt;p&gt;Developers might intuitively understand a function signature as “the
+first line of the function, which defines the contract by which it can
+be invoked”. This latter understanding is important because the concept
+of a “contract” implies something about &lt;em&gt;the role the function signature
+plays in software design and development&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;To demonstrate this, we will work through multiple iterations of a
+function signature across 3 programming languages. Each iteration will
+provide more information, or alter the way the information is presented,
+with the intention of expressing as much useful information to the
+reader as possible about a function without needing to see its
+implementation.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;jarring-javascript&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#jarring-javascript&quot; aria-label=&quot;Anchor link for: jarring-javascript&quot;&gt;Jarring Javascript&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;We’ll start with a very simple (almost certainly &lt;strong&gt;too&lt;&#x2F;strong&gt; simple)
+Javascript function signature. For our purposes, the implementation is
+irrelevant.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; class=&quot;language-javascript z-code&quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-ts&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-definition z-function z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;c&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-begin z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;p&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-parameter z-ts&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;n&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-end z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;What can we learn about this function based on this line alone? Not
+much. It’s a function that takes two arguments. The language is dynamic,
+so we don’t know the types of data it accepts. Perhaps &lt;code&gt;p&lt;&#x2F;code&gt; has some
+significance to the kind of parameter it is. A &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;P-value&quot;&gt;P
+value&lt;&#x2F;a&gt;? A probability? &lt;code&gt;n&lt;&#x2F;code&gt;
+usually represents a number, so that’s probably what we should pass in
+there. Well, there’s little use in blind guessing, let’s move on to the
+next iteration and see what else a function signature can convey.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; class=&quot;language-javascript z-code&quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-ts&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-definition z-function z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;changeName&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-begin z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-parameter z-ts&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-end z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ah! &lt;code&gt;changeName&lt;&#x2F;code&gt;. Looks like our initial assessment was quite far off.
+This is a simple function that takes in a &lt;code&gt;person&lt;&#x2F;code&gt; (presumably an object
+of some kind), and a &lt;code&gt;name&lt;&#x2F;code&gt; (presumably a string or something that can
+be turned into a string), and then changes the name of the person to be
+the provided name. But, wait, what does it mean to “change the name of
+the person”? Do we mutate the value directly on the object we pass in?
+Or do we get a new &lt;code&gt;person&lt;&#x2F;code&gt; with the changed name? If it’s mutating the
+state of its parameter, that could cause a lot of complications or
+unexpected bugs. Let’s take a look at the next version and find out.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; class=&quot;language-javascript z-code&quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;&#x2F;**&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * Changes the name of a person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; *
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;param&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;Object&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-jsdoc&quot;&gt;person&lt;&#x2F;span&gt; - The person whose name will be changed.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;param&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;string&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-jsdoc&quot;&gt;name&lt;&#x2F;span&gt; - The new name to assign to the person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;TypeError&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if the input types are invalid.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;Error&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if the name is empty.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; &lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;*&#x2F;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-ts&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-definition z-function z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;changeName&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-begin z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-parameter z-ts&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-end z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Okay, maybe we’re stretching the definition of a function signature here
+a little bit. All we’ve done is add a
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;jsdoc.app&#x2F;about-getting-started&quot;&gt;JSDoc&lt;&#x2F;a&gt; comment! The actual
+signature remains the same. However, with this change, a developer can
+inspect the function and get a nice description with all of these
+additional details in their editor. On top of that, there are editor
+extensions that will do static analysis based on this information to
+perform a limited kind of type checking. JSDoc’s primary utility is
+actually in generating documentation directly from Javascript source
+code. What information do we get for the additional effort? Well, for
+one, we now get a natural language description of the function’s
+purpose. We also know more concretely the types of the parameters it
+accepts.&lt;&#x2F;p&gt;
+&lt;p&gt;The author could also have provided documentation on the return type,
+but there isn’t any. Maybe they forgot. Or maybe it mutates the input
+and so there is no return to document. That’s not something we can
+conclude without running the function, or checking its implementation. A
+new piece of information has been surfaced though! This function can
+throw errors! Multiple kinds of errors, in multiple possible scenarios.
+If the caller didn’t know about this in previous iterations, they could
+have gone unhandled in user code until an unexpected error was thrown at
+runtime, after which it would need to be investigated, which would
+potentially involve jumping into the implementation of this function to
+understand what was causing the error.&lt;&#x2F;p&gt;
+&lt;p&gt;So, we’ve improved significantly on the initial Javascript function
+signature but there are still many uncertainties. What benefit can we
+get by grafting gradual types and a build step to the language?&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;typical-typescript&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#typical-typescript&quot; aria-label=&quot;Anchor link for: typical-typescript&quot;&gt;Typical Typescript&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;With Typescript, we get a build step with a transpiler that will perform
+some correctness checks on our function calls. We can then move our type
+information directly into the type system, and prevent invalid function
+calls by having them fail the build. This approach brings many of the
+same benefits of just documentation, like static analysis tools and
+editor extensions.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; class=&quot;language-typescript z-code&quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;&#x2F;**&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * Changes the name of a person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; *
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;TypeError&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if the input types are invalid.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;Error&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if the name is empty.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; &lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;*&#x2F;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-ts&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-definition z-function z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;changeName&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-begin z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-annotation z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;Person&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-parameter z-ts&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-annotation z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;String&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-end z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Unfortunately, Typescript’s error model is not integrated into its type
+system, and so we still need to document possible errors. The JSDoc
+syntax has been used here for consistency, though JSDoc + Typescript is
+not a popular combination. Most often, developers opt for the benefits
+of gradual typing and bite the bullet on untracked errors, abandoning
+the other benefits of a tool like JSDoc (there is a tool called
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;tsdoc.org&#x2F;&quot;&gt;TSDoc&lt;&#x2F;a&gt; but it is infinitesimally unpopular by
+comparison to Typescript itself).&lt;&#x2F;p&gt;
+&lt;p&gt;This time, the lack of return is less ambiguous than before. We know
+that this function doesn’t return anything! So, it must mutate the input
+parameter &lt;code&gt;person&lt;&#x2F;code&gt; to actually change its name.&lt;&#x2F;p&gt;
+&lt;p&gt;Assuming it passes its unit tests.&lt;&#x2F;p&gt;
+&lt;p&gt;Assuming those unit tests are correct.&lt;&#x2F;p&gt;
+&lt;p&gt;Assuming it &lt;strong&gt;has&lt;&#x2F;strong&gt; unit tests.&lt;&#x2F;p&gt;
+&lt;p&gt;Well, domain and logic errors aren’t the concern of the language,
+anyway - that’s a problem even the most fully-featured compilers can’t
+solve. Let’s move on to a slightly different version of this function
+signature that presents a slightly &lt;em&gt;different&lt;&#x2F;em&gt; problem.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; class=&quot;language-typescript z-code&quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;&#x2F;**&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * Changes the name of a person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; *
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;TypeError&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if the input types are invalid.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;Error&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if the name is empty.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; &lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;*&#x2F;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-ts&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-definition z-function z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;changeName&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-begin z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-annotation z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;Person&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-parameter z-ts&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-annotation z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;String&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-end z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-return z-type z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;Person&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This function signature shows that it returns a &lt;code&gt;Person&lt;&#x2F;code&gt; object, so it
+probably doesn’t mutate the input. It’s not a guarantee, though, since
+it could technically mutate it and then return it for convenience in
+chaining functions… Maybe this is something that could have been
+clarified in the description — as useful as documentation is, it’s
+dependent on the author and their ability to communicate design intent
+in natural language. That’s not something that can be checked by a
+compiler or static analysis tool.&lt;&#x2F;p&gt;
+&lt;p&gt;At this point, we’ve hit the boundaries of most popular languages’
+function signatures. There are nuances such as Go’s ability to implement
+a function on a data type for dot-notation, but really that’s just
+changing the calling convention. Perhaps the main thing that hasn’t been
+covered yet is how languages handle passing arguments by reference and
+value. This is a language-dependent concern, but it’s very important for
+understanding certain characteristics of your functions. For example, if
+we knew that our &lt;code&gt;person&lt;&#x2F;code&gt; argument was being passed by value, and not by
+reference, then we could be certain it wasn’t being mutated in the
+function. In Javascript, objects are passed by reference (as are most
+heap-allocated data types in most languages). In Go, or C, among many
+other languages, we can explicitly pass pointers to functions. This
+allows more fine-grained expression of intent in our function
+signatures.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;relentless-rust&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#relentless-rust&quot; aria-label=&quot;Anchor link for: relentless-rust&quot;&gt;Relentless Rust&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;If we have control over pass-by-reference and pass-by-value in multiple
+languages, why specifically use Rust as our final language? Well, Rust’s
+references have additional semantic meaning that communicate more
+information than other languages. We’ll see the benefits of this soon —
+for now let’s take a look at the first version of our function signature
+in Rust:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; class=&quot;language-rust z-code&quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; Changes the name of a person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-rust&quot;&gt;fn&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-rust&quot;&gt;change_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-rust&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; Person, &lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; String&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-rust&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt; &lt;span class=&quot;z-meta z-function z-return-type z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt; Person&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-rust&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-rust&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For the most part, this looks near-identical to the previous Typescript
+signature. In fact, although we’re providing a summary documentation
+comment, we’ve done away with the error documentation, so it seems like
+there’s &lt;em&gt;less&lt;&#x2F;em&gt; information here, at first glance. This is not the case;
+Rust doesn’t have errors or exceptions in the way many other languages
+do . If the return type doesn’t show us there can be an error, then
+there won’t be. If the possibility of failure exists, we can track it in
+the type system, as we can see in the next iteration.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; class=&quot;language-rust z-code&quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; Changes the name of a person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-rust&quot;&gt;fn&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-rust&quot;&gt;change_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-rust&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; Person, &lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; String&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-rust&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;    &lt;span class=&quot;z-meta z-function z-return-type z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-generic z-rust&quot;&gt;&lt;span class=&quot;z-support z-type z-rust&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-generic z-begin z-rust&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;Person, NameError&lt;span class=&quot;z-punctuation z-definition z-generic z-end z-rust&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-rust&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-rust&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This version returns a &lt;code&gt;Result&lt;&#x2F;code&gt; type. Not only does it tell us the type
+it can return on success, but we can also provide a specific error type,
+customised to have direct meaning within our domain. The caller of this
+function is forced by the compiler to handle both the good and bad
+execution paths, and they’re aware of the possible failures &lt;em&gt;before they
+even call the function&lt;&#x2F;em&gt;. This information being integrated into the type
+system, combined with quality static analysis and editor integration,
+mean that all of this information can be seamlessly leveraged to
+streamline the developer’s use of the code.&lt;&#x2F;p&gt;
+&lt;p&gt;But there is another piece of information in this signature that hasn’t
+been covered yet: it tells us how the arguments are being passed. In
+Rust, when a function accepts a plain type as an argument, the memory
+that stores that parameter is moved into the function’s scope when it is
+called. We literally &lt;em&gt;move&lt;&#x2F;em&gt; the argument into the function,
+relinquishing that memory from the calling scope into the function
+scope. We only get it back if the function returns it to us. Otherwise,
+it gets cleaned up when the function completes. We can also pass by
+reference, of course:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; class=&quot;language-rust z-code&quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; Changes the name of a person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-rust&quot;&gt;fn&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-rust&quot;&gt;change_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-rust&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-rust&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;Person, &lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-rust&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-rust&quot;&gt;str&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-rust&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;    &lt;span class=&quot;z-meta z-function z-return-type z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-generic z-rust&quot;&gt;&lt;span class=&quot;z-support z-type z-rust&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-generic z-begin z-rust&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;Person, NameError&lt;span class=&quot;z-punctuation z-definition z-generic z-end z-rust&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-rust&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-rust&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This version of the function signature accepts its arguments by &lt;em&gt;shared
+reference&lt;&#x2F;em&gt;. This means that the reference can be borrowed by multiple
+functions, and the type checker guarantees certain kinds of safety by
+allowing them to &lt;em&gt;access&lt;&#x2F;em&gt; the data but &lt;strong&gt;not&lt;&#x2F;strong&gt; allowing them to &lt;em&gt;modify&lt;&#x2F;em&gt;
+it. Based on this, when we see a parameter passed by shared reference to
+a function, we know it &lt;strong&gt;cannot&lt;&#x2F;strong&gt; be mutated in the function. And
+because of how the references work in Rust’s type system, there’s no
+possibility of unforeseen &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Glossary&#x2F;Shallow_copy&quot;&gt;shallow copying
+issues&lt;&#x2F;a&gt;
+that you might run into in a language where a seemingly immutable
+reference is passed, and although the reference can’t be changed, values
+accessible transitively through it can be.&lt;&#x2F;p&gt;
+&lt;p&gt;Whether for performance constraints or due to the nature of the domain
+we’re working in, some problems need to be solved with mutation,
+however. So, how does Rust handle mutation?&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; class=&quot;language-rust z-code&quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; Changes the name of a person.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-rust&quot;&gt;fn&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-rust&quot;&gt;change_name&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-rust&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;person&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-rust&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-modifier z-rust&quot;&gt;mut&lt;&#x2F;span&gt; Person, &lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-rust&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span class=&quot;z-storage z-type z-rust&quot;&gt;str&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-rust&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;    &lt;span class=&quot;z-meta z-function z-return-type z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-generic z-rust&quot;&gt;&lt;span class=&quot;z-support z-type z-rust&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-generic z-begin z-rust&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-type z-rust&quot;&gt;Ok&lt;&#x2F;span&gt;, NameError&lt;span class=&quot;z-punctuation z-definition z-generic z-end z-rust&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-rust&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-rust&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Looking at the final iteration of &lt;code&gt;change_name&lt;&#x2F;code&gt; above, we can see that
+&lt;code&gt;person&lt;&#x2F;code&gt; is passed with a &lt;em&gt;mutable reference&lt;&#x2F;em&gt;, also called a &lt;em&gt;unique
+reference&lt;&#x2F;em&gt; because it cannot be shared across multiple callers. With
+this signature, we can see that the function needs to take in the
+argument with permission from the type checker to mutate it, it can
+change the name, and then it returns a result showing whether the
+function succeeded to make the change, or ran into an error. It’s
+extremely clear from just the signature what this function does.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;fill-in-the-blank&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#fill-in-the-blank&quot; aria-label=&quot;Anchor link for: fill-in-the-blank&quot;&gt;Fill in the Blank&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;By comparison, let’s take a look at two of the earlier versions of this
+function signature. First, in Javascript:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; class=&quot;language-javascript z-code&quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-ts&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-definition z-function z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;getDeliveryRoute&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-begin z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;packages&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-parameter z-ts&quot;&gt;,&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;options&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-end z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Let’s ask ourselves a few questions about this version.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;1-what-does-it-do&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#1-what-does-it-do&quot; aria-label=&quot;Anchor link for: 1-what-does-it-do&quot;&gt;1.  What does it do?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Assuming based on its name, this function gets a delivery route for some
+packages, and accepts some options which may alter the kind of route it
+determines. This is a tenuously acceptable answer.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;2-what-types-does-it-accept-for-its-arguments&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#2-what-types-does-it-accept-for-its-arguments&quot; aria-label=&quot;Anchor link for: 2-what-types-does-it-accept-for-its-arguments&quot;&gt;2.  What types does it accept for its arguments?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;There is no way of knowing the exact types. Because the language is
+dynamic, any type will do, so long as it has the properties needed for
+the implementation of the function… which we can only know by inspecting
+the implementation. Not a good answer.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;3-what-does-it-return&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#3-what-does-it-return&quot; aria-label=&quot;Anchor link for: 3-what-does-it-return&quot;&gt;3.  What does it return?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Ideally, it returns a delivery route. We know nothing about what kind of
+data that might be. No good here, either.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;4-what-kind-of-errors-or-exceptions-can-occur&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#4-what-kind-of-errors-or-exceptions-can-occur&quot; aria-label=&quot;Anchor link for: 4-what-kind-of-errors-or-exceptions-can-occur&quot;&gt;4.  What kind of errors or exceptions can occur?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;There is no way of knowing without writing a test or debugging it, but
+we’re supposed to be consuming this code and not checking its
+implementation. It’s not doing us any favours.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;5-does-it-run-at-all&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#5-does-it-run-at-all&quot; aria-label=&quot;Anchor link for: 5-does-it-run-at-all&quot;&gt;5.  Does it run at all?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;As with the previous question, we really don’t know.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;6-is-it-publicly-accessible&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#6-is-it-publicly-accessible&quot; aria-label=&quot;Anchor link for: 6-is-it-publicly-accessible&quot;&gt;6.  Is it publicly accessible?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Presumably not, as there’s no &lt;code&gt;export&lt;&#x2F;code&gt; keyword but, in Javascript,
+module members can be exported in a separate statement. So, maybe.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;7-are-the-parameters-passed-by-reference-or-by-value&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#7-are-the-parameters-passed-by-reference-or-by-value&quot; aria-label=&quot;Anchor link for: 7-are-the-parameters-passed-by-reference-or-by-value&quot;&gt;7.  Are the parameters passed by reference or by value?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;That depends on what gets passed in. If they’re certain primitive types,
+they’ll be passed by value. If they’re most types, they’ll be passed by
+reference.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;8-does-it-mutate-its-parameters-affecting-external-state&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#8-does-it-mutate-its-parameters-affecting-external-state&quot; aria-label=&quot;Anchor link for: 8-does-it-mutate-its-parameters-affecting-external-state&quot;&gt;8.  Does it mutate its parameters, affecting external state?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Absolutely no idea.&lt;&#x2F;p&gt;
+&lt;br &#x2F;&gt;
+&lt;hr &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;p&gt;After our journey through increasingly descriptive function signatures,
+that last one really shows its deficiencies. There are absolutely
+benefits to dynamic types, and much could be done to improve this with
+some good, in-source documentation. But for the purposes of
+demonstration, let’s consider the same questions for the more
+disciplined Typescript signature below.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;typescript&quot; class=&quot;language-typescript z-code&quot;&gt;&lt;code class=&quot;language-typescript&quot; data-lang=&quot;typescript&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;&#x2F;**&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * Determines a delivery route for a set of packages considering
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * distance, time constraints, and delivery priorities.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; *
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;PackageDataError&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if any package is missing required
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * coordinates or timeframes.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;RouteError&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if no viable route can be calculated with
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * the given constraints.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * &lt;span class=&quot;z-storage z-type z-class z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-tag z-jsdoc&quot;&gt;@&lt;&#x2F;span&gt;throws&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-begin z-jsdoc&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;TypeError&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-type z-instance z-jsdoc&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-bracket z-curly z-end z-jsdoc&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; if either parameter is not of the correct
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; * type at run time.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-comment z-block z-documentation z-ts&quot;&gt; &lt;span class=&quot;z-punctuation z-definition z-comment z-ts&quot;&gt;*&#x2F;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-control z-export z-ts&quot;&gt;export&lt;&#x2F;span&gt; &lt;span class=&quot;z-storage z-type z-function z-ts&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-definition z-function z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;getDeliveryRoute&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-begin z-ts&quot;&gt;(&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;  &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;packages&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-annotation z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;List&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-typeparameters z-begin z-ts&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;Package&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-typeparameters z-end z-ts&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-parameter z-ts&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;  &lt;span class=&quot;z-variable z-parameter z-ts&quot;&gt;name&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-type z-annotation z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;DeliveryOptions&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-meta z-function z-ts&quot;&gt;&lt;span class=&quot;z-meta z-parameters z-ts&quot;&gt;&lt;span class=&quot;z-meta z-type z-annotation z-ts&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-parameters z-end z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-return z-type z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-type z-annotation z-ts&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;Route&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;{&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-block z-ts&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;1-what-does-it-do-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#1-what-does-it-do-1&quot; aria-label=&quot;Anchor link for: 1-what-does-it-do-1&quot;&gt;1.  What does it do?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;This time, we have a nice summary that gives a good understanding of its
+behaviour. It gets a delivery route for a set of packages and considers
+distance, time, and some set of domain-related priorities. This is a
+great improvement.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;2-what-types-does-it-accept-for-its-arguments-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#2-what-types-does-it-accept-for-its-arguments-1&quot; aria-label=&quot;Anchor link for: 2-what-types-does-it-accept-for-its-arguments-1&quot;&gt;2.  What types does it accept for its arguments?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;We can see that it accepts a &lt;code&gt;List&amp;lt;Package&amp;gt;&lt;&#x2F;code&gt; and a &lt;code&gt;DeliveryOptions&lt;&#x2F;code&gt;,
+both of which are models relating to the domain and can be easily
+inspected for their properties. Another valuable improvement for the
+caller of this function.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;3-what-does-it-return-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#3-what-does-it-return-1&quot; aria-label=&quot;Anchor link for: 3-what-does-it-return-1&quot;&gt;3.  What does it return?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Now we have confirmation that it returns something, and that something
+is a &lt;code&gt;Route&lt;&#x2F;code&gt; whose properties are knowable when calling the function,
+without checking the function itself.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;4-what-kind-of-errors-or-exceptions-can-occur-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#4-what-kind-of-errors-or-exceptions-can-occur-1&quot; aria-label=&quot;Anchor link for: 4-what-kind-of-errors-or-exceptions-can-occur-1&quot;&gt;4.  What kind of errors or exceptions can occur?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;As far as the documentation tells us, there are a few kinds of errors
+related to the domain, and a possible typing error due to edge cases
+with gradual typing. It’s a step up from before, but it’s also easy to
+miss niche error cases when documenting them this way.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;5-does-it-run-at-all-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#5-does-it-run-at-all-1&quot; aria-label=&quot;Anchor link for: 5-does-it-run-at-all-1&quot;&gt;5.  Does it run at all?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;For the same reasons as the Javascript version, we unfortunately have to
+answer ‘maybe’.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;6-is-it-publicly-accessible-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#6-is-it-publicly-accessible-1&quot; aria-label=&quot;Anchor link for: 6-is-it-publicly-accessible-1&quot;&gt;6.  Is it publicly accessible?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;This time, the implementer has opted to place the export in the function
+signature line, so we can definitively say yes.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;7-are-the-parameters-passed-by-reference-or-by-value-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#7-are-the-parameters-passed-by-reference-or-by-value-1&quot; aria-label=&quot;Anchor link for: 7-are-the-parameters-passed-by-reference-or-by-value-1&quot;&gt;7.  Are the parameters passed by reference or by value?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Now that we know they are &lt;code&gt;Object&lt;&#x2F;code&gt;s of some kind, they will be passed by
+reference. Assuming nobody does any funny business with the type
+checking and passes in illegal parameters. All this would do is throw an
+error, but still, it’s not a &lt;em&gt;true&lt;&#x2F;em&gt; guarantee.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;8-does-it-mutate-its-parameters-affecting-external-state-1&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#8-does-it-mutate-its-parameters-affecting-external-state-1&quot; aria-label=&quot;Anchor link for: 8-does-it-mutate-its-parameters-affecting-external-state-1&quot;&gt;8.  Does it mutate its parameters, affecting external state?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Based on the return and the description, it’s unlikely. We can’t be
+certain, though.&lt;&#x2F;p&gt;
+&lt;br &#x2F;&gt;
+&lt;hr &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;p&gt;Overall, this signature has provided a wealth of new information and
+many more guarantees. It would be much easier for a caller of this
+function to understand its characteristics than before. But there are
+rough edges and some facets of the signature that require good behaviour
+from the developer to be documented. We know that much of this can be
+moved into the type system in Rust, and so in our final iteration, we’ll
+take a look at a full-featured signature with not only a documentation
+comment, but also an executable example of the function call and
+additional explanation of the possible error values.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; class=&quot;language-rust z-code&quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; Determines a delivery route for a set of packages considering
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; distance, time constraints, and delivery priorities.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; # Examples
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; ```
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; let test_package = Package {
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;     Sku: 123,
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;     Name: &amp;quot;Test Package&amp;quot;,
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;     Weight: 12.as_g()
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; };
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; let packages = vec![Package::new()];
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; let options = DeliveryOptions::default()
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;     .with_algorithm(Algorithm::DistanceFirst);
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; let route = get_delivery_route(&amp;amp;packages, &amp;amp;options)?;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; assert!(route.total_distance() &amp;lt; 100.0);
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; ```
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; # Errors
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; Returns `RouteError::InvalidPackageData` if any package is
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; missing required coordinates or timeframes.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; Returns `RouteError::NoViableRoute` if no viable route can
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-comment z-line z-documentation z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-rust&quot;&gt;&#x2F;&#x2F;&#x2F;&lt;&#x2F;span&gt; be calculated with the given constraints.
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-storage z-modifier z-rust&quot;&gt;pub&lt;&#x2F;span&gt; &lt;span class=&quot;z-storage z-type z-function z-rust&quot;&gt;fn&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-rust&quot;&gt;get_delivery_route&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-rust&quot;&gt;(&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;    &lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;packages&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-rust&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;[Package], 
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;    &lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;options&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-rust&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;DeliveryOptions
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-rust&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt; &lt;span class=&quot;z-meta z-function z-return-type z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;-&amp;gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-generic z-rust&quot;&gt;&lt;span class=&quot;z-support z-type z-rust&quot;&gt;Result&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-generic z-begin z-rust&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;Route, RouteError&lt;span class=&quot;z-punctuation z-definition z-generic z-end z-rust&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-rust&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-rust&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4 id=&quot;1-what-does-it-do-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#1-what-does-it-do-2&quot; aria-label=&quot;Anchor link for: 1-what-does-it-do-2&quot;&gt;1.  What does it do?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;We have the same useful description as before, but now we even get to
+see an example of it being called so we can place it in context and see
+some of the assiciated data types we may want to pass in (such as
+&lt;code&gt;DeliveryOptions&lt;&#x2F;code&gt; having an &lt;code&gt;Algorithm&lt;&#x2F;code&gt; enum).&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;2-what-types-does-it-accept-for-its-arguments-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#2-what-types-does-it-accept-for-its-arguments-2&quot; aria-label=&quot;Anchor link for: 2-what-types-does-it-accept-for-its-arguments-2&quot;&gt;2.  What types does it accept for its arguments?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;As with the Typescript signature, we can see the exact types it accepts
+right there in the signature. Shared references to a collection of
+&lt;code&gt;Package&lt;&#x2F;code&gt;s and a &lt;code&gt;DeliveryOptions&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;3-what-does-it-return-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#3-what-does-it-return-2&quot; aria-label=&quot;Anchor link for: 3-what-does-it-return-2&quot;&gt;3.  What does it return?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;This time, the return type contains our error information as well as the
+type it returns on success. The &lt;code&gt;Route&lt;&#x2F;code&gt; type is either a struct or enum
+of some kind which will specify the data available to the caller of the
+function. Our success case is about equivalent to the Typescript
+signature.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;4-what-kind-of-errors-or-exceptions-can-occur-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#4-what-kind-of-errors-or-exceptions-can-occur-2&quot; aria-label=&quot;Anchor link for: 4-what-kind-of-errors-or-exceptions-can-occur-2&quot;&gt;4.  What kind of errors or exceptions can occur?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Not only do we know that it &lt;em&gt;can&lt;&#x2F;em&gt; fail, we have an enum of error values
+that it could provide as a result, and if it does we can handle each
+however we like. The documentation even explains what causes each of the
+possible errors to occur. And due to the language’s error model, we know
+that no other error type will occur (unless someone applies blunt force
+trauma to the CPU, but we only expect that kind of resilience from
+Erlang).&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;5-does-it-run-at-all-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#5-does-it-run-at-all-2&quot; aria-label=&quot;Anchor link for: 5-does-it-run-at-all-2&quot;&gt;5.  Does it run at all?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Although it’s never a guarantee that this kind of thing will be
+provided, it &lt;strong&gt;is&lt;&#x2F;strong&gt; a prominent pattern in the Rust community to include
+example code snippets with assertions above a function signature. So
+much so that many editors allow you to execute Rust code snippets from
+within the source code, sometimes even just from hovering a function
+invocation and inspecting the popup. So, without writing any tests,
+running the application, doing any direct debugging, we do have a
+straightforward way to see that it behaves as expected.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;6-is-it-publicly-accessible-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#6-is-it-publicly-accessible-2&quot; aria-label=&quot;Anchor link for: 6-is-it-publicly-accessible-2&quot;&gt;6.  Is it publicly accessible?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Yes! The &lt;code&gt;pub&lt;&#x2F;code&gt; keyword is the way to make a module member publically
+accessible, and it must be part of the function signature to apply.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;7-are-the-parameters-passed-by-reference-or-by-value-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#7-are-the-parameters-passed-by-reference-or-by-value-2&quot; aria-label=&quot;Anchor link for: 7-are-the-parameters-passed-by-reference-or-by-value-2&quot;&gt;7.  Are the parameters passed by reference or by value?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;The signature clearly shows that they are passed by reference. Not just
+any reference, a shared reference. We know not just the way their memory
+is handled, but how&#x2F;whether they can be passed to other functions at the
+same time. If we know that the types themselves (&lt;code&gt;Package&lt;&#x2F;code&gt; and
+&lt;code&gt;DeliveryOptions&lt;&#x2F;code&gt;) are thread-safe, then we even know that the shared
+references are thread-safe. To contrast, even if the underlying types
+were thread-safe, &lt;code&gt;&amp;amp;mut&lt;&#x2F;code&gt; parameters are &lt;strong&gt;not&lt;&#x2F;strong&gt; thread-safe.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;8-does-it-mutate-its-parameters-affecting-external-state-2&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#8-does-it-mutate-its-parameters-affecting-external-state-2&quot; aria-label=&quot;Anchor link for: 8-does-it-mutate-its-parameters-affecting-external-state-2&quot;&gt;8.  Does it mutate its parameters, affecting external state?&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Because the arguments are not passed mutably, the function signature
+guarantees that the parameters will not be mutated and the function will
+not affect external state.&lt;&#x2F;p&gt;
+&lt;br &#x2F;&gt;
+&lt;hr &#x2F;&gt;
+&lt;br &#x2F;&gt;
+&lt;p&gt;All of these answers are knowable by reading just the function
+signature, checkable at compile time, and the documentation comments
+surface information in your code editor so you can understand all of
+this as a user of the function, without needing to inspect the code
+itself. Even without the extensive doc comments, we still know about
+mutation, input&#x2F;output types, possible errors, module accessibility, and
+even thread safety &amp;amp; data race information.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;so-really-what-s-in-a-function-signature&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#so-really-what-s-in-a-function-signature&quot; aria-label=&quot;Anchor link for: so-really-what-s-in-a-function-signature&quot;&gt;So, Really, What’s in a Function Signature?&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;I’ll answer a question with a question: How much useful information can
+you fit in it?&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

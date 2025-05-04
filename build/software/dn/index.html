@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>λm.m</title>
+  <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css"
+    integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous" />
+  <script type="module">
+    import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.mjs";
+    renderMathInElement(document.body, {
+      // customised options
+      // • auto-render specific keys, e.g.:
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+      ],
+      // • rendering keys, e.g.:
+      throwOnError: false,
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <div id="header-banner">
+      <h1 id="site-title"><a href="/" class="home-link">λm.m</a></h1>
+      <nav>
+        <ul id="nav-list">
+          <a class="nav-item nav-link" href="/tags">/tags</a>
+          <a class="nav-item nav-link" href="/art">/art</a>
+          <a class="nav-item nav-link" href="/blog">/blog</a>
+          <a class="nav-item nav-link" href="/software">/software</a>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+<div id="content-page-meta-top">
+  <span id="content-page-date">2024-12-21</span>
+  <ul class="blog-tag-list">
+     
+  </ul>
+</div>
+<h1 id="content-page-title">dn</h1>
+<hr class="title-underline" />
+<section><h2 id="overview">Overview</h2>
+<p><code>dn</code> is a CLI tool for creating and renaming files with a regular structure. The benefit of this regular structure is that it is predictable and compatible with regular expressions. An example file name with every possible segment present looks like this:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">20241221T132030==1a--example-file__test_demo.md
+</span></code></pre>
+<p>It has a mandatory unique identifier and file extension, with optional the optional segments for signature, title, and keywords. The purpose of identifier, file extension, and title are most likely self-evident but the benefit of keywords is that different files can be searched and grouped by subject-matter or theme, and the signature allows for organising files according to an additional arbitrary user relationship. This means that <code>dn</code> can be used to implement a digitial <a rel="noopener" target="_blank" href="https://zettelkasten.de/overview/">Zettelkasten</a> with <a rel="noopener" target="_blank" href="https://zettelkasten.de/folgezettel/">Folgezettel</a> if a user wants to.</p>
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> Make a new note.</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">dn</span></span><span class="z-meta z-function-call z-arguments z-shell"> new<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>title</span> foo<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>keywords</span> example<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>extension</span> dj</span>
+</span></code></pre>
+<p>Because of the naming scheme’s regularity, many other shell tools like <a rel="noopener" target="_blank" href="https://github.com/BurntSushi/ripgrep">ripgrep</a> and <a rel="noopener" target="_blank" href="https://junegunn.github.io/fzf/">fzf</a> can be used to build a personalised note-taking or file-organisation workflow.</p>
+<pre data-lang="sh" class="language-sh z-code"><code class="language-sh" data-lang="sh"><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> Search notes directory for files with fzf </span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-comment z-line z-number-sign z-shell"><span class="z-punctuation z-definition z-comment z-begin z-shell">#</span></span><span class="z-comment z-line z-number-sign z-shell"> and open the chosen file in neovim.</span><span class="z-comment z-line z-number-sign z-shell">
+</span></span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">rg</span></span><span class="z-meta z-function-call z-arguments z-shell"> <span class="z-meta z-group z-expansion z-parameter z-shell"><span class="z-punctuation z-definition z-variable z-shell">$</span><span class="z-variable z-other z-readwrite z-shell">DN_DIRECTORY</span></span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>files</span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">fzf</span></span> <span class="z-keyword z-operator z-logical z-pipe z-shell">|</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">xargs</span></span><span class="z-meta z-function-call z-arguments z-shell"> hx</span>
+</span></code></pre>
+<h2 id="features">Features</h2>
+<ul>
+<li>Flexible creation and renaming of files</li>
+<li>Front matter generation</li>
+<li>Template insertion</li>
+<li>Configurability via a single TOML file</li>
+<li>Extensibility with text editor plugins</li>
+<li>Unicode-aware sorting of keywords</li>
+<li>Shell-completion scripts</li>
+<li>Manpages</li>
+</ul>
+<h2 id="insights">Insights</h2>
+<p>The initial motivation for this project was to have a convenient, small, portable solution for managing my personal notes. It provided an opportunity to learn a lot more about Rust, and about the intricacies of creating open source software. I was able to collaborate closely with another maintainer, ensure compliance with the FSFE’s <a rel="noopener" target="_blank" href="https://reuse.software/">REUSE</a> standard, and write extensive documentation both in-source and outside.</p>
+<p>Many things have been learned along the way:</p>
+<ul>
+<li>The benefit of good in-source documentation facilities</li>
+<li>Regular expressions are not as opaque as I thought</li>
+<li>Rust’s memory model is actually quite intuitive and helpful</li>
+<li>Copyright and licensing concerns are very important in open source work</li>
+<li>Dependencies are hard to avoid</li>
+<li>Implementation without design leads to confusion and mess</li>
+</ul>
+<p>The language and libraries chosen for this project were borne of convenience and utility rather than personal preference. I needed a language which had proper UTF-8 support with powerful text manipulation features, and the ability to compile to a single binary for all major personal computing platforms. Rust was the most appropriate choice for this use case. It was an explicit goal from the beginning to keep dependencies minimal, and that will remain the case until <code>dn</code> is considered finished at which time all dependencies will be vendored and maintained with the tool itself.</p>
+<h2 id="source-code">Source Code</h2>
+<p>The source code for <code>dn</code> is hosted on GitHub and can be found <a rel="noopener" target="_blank" href="https://github.com/mmibbetson/dn">here</a>.</p>
+</section>
+<div id="content-page-meta-bottom">
+  <div id="reading-time">Estimated reading time: 3m</div>
+  <div id="word-count">Word count: 439</div>
+</div>
+</main>
+
+  <footer>
+    <span class="line">© 2024 Matthew Mark Ibbetson,&nbsp;</span>
+    <span class="line">
+      Content
+      <a href="/license/CC-BY-NC-SA-4.0.txt" class="decorated-link">CC-BY-NC-SA-4.0</a>
+      ,&nbsp;
+    </span>
+    <span class="line">
+      <a href="https://github.com/mmibbetson/mmibbetson.github.io" class="decorated-link">Source Code</a>
+      <a href="/license/AGPL-3.0-or-later.txt" class="decorated-link">AGPL-3.0-or-later</a>
+    </span>
+  </footer>
+</body>
+
+</html>
