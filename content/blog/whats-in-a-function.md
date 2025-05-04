@@ -2,7 +2,7 @@
 title       = "What's in a Function Signature?"
 date        = 2025-05-04
 description = """
-Function signatures are the boundaries of the layers of abstraction in software. They are one of the most frequently interacted-with parts of a code base, as any developer uses them as the first port of call when interacting with a new module. In this post, I discuss various kinds of information that can be communicated in a function signature, and how.
+Function signatures are the boundaries of the layers of abstraction in software. They are one of the most frequently interacted-with parts of a code base, as any developer uses them as the first port of call when interacting with a new module.
 """
 [taxonomies]
 tags = ["rust", "javascript", "typescript"]
