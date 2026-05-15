@@ -2,7 +2,7 @@
 title       = "Reflections On Agentic Coding"
 date        = 2026-05-15
 description = """
-I don't even know dude
+TODO
 """
 [taxonomies]
 tags = ["programming", "ai"]
@@ -11,8 +11,7 @@ tags = ["programming", "ai"]
 <!-- TODO: Inject a sense that this will be a somewhat philosophical article -->
 I'll state upfront that I'm not pro-LLM. I've never been a _'vibe-coder'_ or a _'prompt engineer'_ or aspired to be anything of the sort. I have many grievances with these tools, and I value programming as a craft to be studied and mastered for the joy it can bring. However, I am also a curious person. I'd like to think I prefer to understand things before I dismiss them; I'm an employee in a capitalist labour market; I'm sometimes very lazy. Suffice it to say that these things, among others, are motivation enough for spending some time familiarising myself with agentic programming tools and toying with some of the technologies involved.
 
-<!-- TODO: Reduce focus on MCPeek as a concrete thing, broad-strokes coverage of the fact that I've build something as credibility but this article will not be about what I built. -->
-[MCPeek](https://codeberg.org/mmibbetson/mcpeek) is a dead-simple server that provides _Magic: The Gathering_ card information from [Scryfall](https://scryfall.com/) to LLMs via the [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro). Most popular models have been trained on data from Scryfall and some can answer questions about cards and relevant rulings with moderate accuracy but, for a game with deterministic rules, people need accurate and deterministic information. Additionally, [model drift](https://www.ibm.com/think/topics/model-drift) will cause information to become stale over time. Ultimately, the LLM is still nondeterministic and can hallucinate even when rigorously instructed to reference accurate information from a database but I needed a project to try out a few different agentic programming tools and this seemed trivial enough while having some minor utility.
+<!-- TODO: Reduce focus on MCPeek as a concrete thing, broad-strokes coverage of the fact that I've build something as credibility but this article will not be about what I built. I need to lay the foundation of what I actually intend to share and where it's coming from. -->
 
 ## The Benefits of Agentic Workflows
 
