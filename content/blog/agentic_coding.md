@@ -8,17 +8,17 @@ I don't even know dude
 tags = ["programming", "ai"]
 +++
 
-> I'll state upfront that I'm not pro-LLM. I've never been a _'vibe-coder'_ or a _'prompt engineer'_ or aspired to be anything of the sort. I have many grievances with these tools, and I value programming as a craft to be studied and mastered for the joy it can bring. However, I am also a curious person. I'd like to think I prefer to understand things before I dismiss them; I'm an employee in a capitalist labour market; I'm sometimes very lazy. Suffice it to say that these things, among others, are motivation enough for spending some time familiarising myself with agentic programming tools and toying with some of the technologies involved.
+<!-- TODO: Inject a sense that this will be a somewhat philosophical article -->
+I'll state upfront that I'm not pro-LLM. I've never been a _'vibe-coder'_ or a _'prompt engineer'_ or aspired to be anything of the sort. I have many grievances with these tools, and I value programming as a craft to be studied and mastered for the joy it can bring. However, I am also a curious person. I'd like to think I prefer to understand things before I dismiss them; I'm an employee in a capitalist labour market; I'm sometimes very lazy. Suffice it to say that these things, among others, are motivation enough for spending some time familiarising myself with agentic programming tools and toying with some of the technologies involved.
 
+<!-- TODO: Reduce focus on MCPeek as a concrete thing, broad-strokes coverage of the fact that I've build something as credibility but this article will not be about what I built. -->
 [MCPeek](https://codeberg.org/mmibbetson/mcpeek) is a dead-simple server that provides _Magic: The Gathering_ card information from [Scryfall](https://scryfall.com/) to LLMs via the [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro). Most popular models have been trained on data from Scryfall and some can answer questions about cards and relevant rulings with moderate accuracy but, for a game with deterministic rules, people need accurate and deterministic information. Additionally, [model drift](https://www.ibm.com/think/topics/model-drift) will cause information to become stale over time. Ultimately, the LLM is still nondeterministic and can hallucinate even when rigorously instructed to reference accurate information from a database but I needed a project to try out a few different agentic programming tools and this seemed trivial enough while having some minor utility.
-
-At the very least, when someone wants to know how the [Archaeomancer](https://scryfall.com/card/uma/45/archaeomancer) + [Ephemerate](https://scryfall.com/card/mh1/7/ephemerate) loop works, they can ask an agent and have it break down the interaction step-by-step.
 
 ## The Benefits of Agentic Workflows
 
 ### Velocity
 
-In the wake of large language models, many people like to emphasise that the important part of being a programmer has nothing to do with typing and everything to do with thinking. There is truth to that statement, but I **enjoy** typing out the code myself. I spent time improving my typing speed and learning a [new keyboard layout](https://colemakmods.github.io/mod-dh/) because it was **fun**. I won't argue that other people need to do this, but it's a valid reason to do something. Agentic code takes a lot of that particular joy out of programming (for me) but, [by the same token](https://tvtropes.org/pmwiki/pmwiki.php/Main/AccidentalPun), it removes the monotony of writing boilerplate I've produced many times before.
+In the wake of large language models, many people like to emphasise that the important part of being a programmer has nothing to do with typing and everything to do with thinking. There is truth to that statement, but I **enjoy** typing out the code myself. I spent time improving my typing speed and learning a [new keyboard layout](https://colemakmods.github.io/mod-dh/) because it was **fun**. I won't argue that other people need to do this, but it's a valid reason to do something. Agentic code takes a lot of that particular joy out of programming (for me) but, by the same token, it removes the monotony of writing boilerplate I've produced many times before.
 
 If I'm not the one inputting the syntax, I'm also somewhat separated from the direct implementation concerns; the line-by-line decision making of programming is reduced. By shifting these microdecisions off of my shoulders, the number of steps between conceptualising the work and materialising it is reduced. This can help produce and refine a working artifact much faster than if both design and implementation require my full attention.
 
@@ -62,6 +62,8 @@ Given the negative impacts of programming agentically, it's important to me to w
 
 Furthermore, if I'm relying on an agent to produce the low level semantics of my program, I need to create an environment that enables me to rely on its output as much as possible. High quality static analysis is critical in enabling LLMs to operate effectively, empowering them to adjust based on structured feedback immediately without reprompting. Languages and toolchains that enable LLMs to derive maximum relevant information statically are more enjoyable and effective to work with this way than those that don't<sup>*</sup>. Languages that have high syntactic consistency are similarly preferable; when there is only one way to write something, all instances of it which appear in the training data will look the same, and therefore the model is more likely to produce something correct than be mislead by arbitrary syntactic or conventional differences.
 
+<!-- TODO: Add styling for github markdown note blocks? Also definitely make these indented quote block things more visually distinct with styling -->
+> [!NOTE]
 > <sup>*</sup> I name no languages here to avoid coupling an idea to an implementation.
 
 ### Governance & Shared Mental Models
@@ -78,7 +80,7 @@ Much like my mental energy, my finances are a limited resource best spent in the
 
 ## Reflection
 
-<!-- ive digressed into a more technical discussion in the last bit, i need to create an appropriate bridge for the emotional/psychological stakes that i plan to end all of this on -->
+<!-- TODO: ive digressed into a more technical discussion in the last bit, i need to create an appropriate bridge for the emotional/psychological stakes that i plan to end all of this on -->
 The last thing I've come to believe that I want to mention here is that if I'm going to be working with agentic coding regularly and I care about programming as a craft, about being an intentional creator, then I need to have a hobby project I can work on regularly without using any of this generative tooling. It's one thing to be familiar and historically proficient in a skill, it's another to get my hands dirty regularly and remain current with that skill. Something as simple as inputting the correct syntax is still a skill that will decay without exercise; to keep moving forward, it's sometimes necessary to look back and remember how I got to where I am.
 
 My thoughts & feelings on agentic programming and LLMs in general are still very mixed. I've been able to make good use of the technology to learn, grow, and build useful software rapidly. But there's a subtle dread that I just can't seem to shake. I feel I might be losing something I'm not able to precisely identify. I get the sense that a lot of people around me are feeling the same way.
