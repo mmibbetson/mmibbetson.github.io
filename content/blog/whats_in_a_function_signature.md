@@ -5,10 +5,12 @@ description = """
 Function signatures are the boundaries of the layers of abstraction in software. They are one of the most frequently interacted-with parts of a code base, as any developer uses them as the first port of call when interacting with a new module.
 """
 [taxonomies]
-tags = ["rust", "javascript", "typescript"]
+tags = ["programming", "rust", "javascript"]
 +++
 
 ## The Dotted Line
+
+> Please forgive the repeated exposition of obvious fundamental concepts in the initial passages of this article. The intention is to convey an increasingly complex idea starting from first principles.
 
 A function (or method) signature, [according to MDN Web
 Docs](https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function),
@@ -533,5 +535,6 @@ even thread safety & data race information.
 
 ### So, Really, What’s in a Function Signature?
 
-I’ll answer a question with a question: How much useful information can
-you fit in it?
+The point of all this isn't to say one language is better than another, or that you _must_ cram every ounce of information you can into your function signatures. Really, it's just to show how much is actually possible to communicate in the contracts you have available in your code.
+
+What's in a function signature is only as much as you care to put in it.

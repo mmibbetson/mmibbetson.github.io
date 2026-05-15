@@ -1,8 +1,8 @@
 # The base URL of the site; the only required configuration variable.
-base_url = "https://mmibbetson.github.io"
+base_url = "https://mywebsite.com"
 
 # The site title and description; used in feeds by default.
-title = "Lambdaaa"
+title = "Lambda m.m"
 description = "Personal blog site for mmibbetson"
 
 # The default language; used in feeds.
@@ -40,6 +40,9 @@ ignored_static = []
 # When set to "true", a feed is automatically generated.
 generate_feeds = false
 
+# When set to "all", paginated pages are not a part of the sitemap, default is "none"
+exclude_paginated_pages_in_sitemap = "none"
+
 # The filenames to use for the feeds. Used as the template filenames, too.
 # Defaults to ["atom.xml"], which has a built-in template that renders an Atom 1.0 feed.
 # There is also a built-in template "rss.xml" that renders an RSS 2.0 feed.
@@ -68,8 +71,12 @@ author = "Matthew Mark Ibbetson"
 #     ]
 #
 taxonomies = [
-  {name = "tags", feed = true},
+  {name = "tags", feed = true}
 ]
+
+# Optional base path for all taxonomies. If set, all taxonomy paths will be relative to this path.
+# For example, if taxonomy_root is "blog" and taxonomy is "tags", the path will be /blog/tags/
+# taxonomy_root = "blog"
 
 # When set to "true", a search index is built from the pages and section
 # content for `default_language`.
@@ -83,19 +90,12 @@ generate_robots_txt = true
 
 # Configuration of the Markdown rendering
 [markdown]
-# When set to "true", all code blocks are highlighted.
-highlight_code = true
-
-# A list of directories used to search for additional `.sublime-syntax` and `.tmTheme` files.
-extra_syntaxes_and_themes = []
-
-# The theme to use for code highlighting.
-# See below for list of allowed values.
-highlight_theme = "css"
-
 # When set to "true", emoji aliases translated to their corresponding
 # Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
 render_emoji = true
+
+# CSS class to add to external links (e.g. "external-link")
+# external_links_class =
 
 # Whether external links are to be opened in a new tab
 # If this is true, a `rel="noopener"` will always automatically be added for security reasons
@@ -107,17 +107,71 @@ external_links_no_follow = false
 # Whether to set rel="noreferrer" for all external links
 external_links_no_referrer = false
 
+# Whether to set rel="external" for all external links
+external_links_external = true
+
 # Whether smart punctuation is enabled (changing quotes, dashes, dots in their typographic form)
 # For example, `...` into `…`, `"quote"` into `“curly”` etc
 smart_punctuation = true
 
+# Whether parsing of definition lists is enabled
+definition_list = false
+
 # Whether to set decoding="async" and loading="lazy" for all images
 # When turned on, the alt text must be plain text.
 # For example, `![xx](...)` is ok but `![*x*x](...)` isn’t ok
-lazy_async_image = true
+lazy_async_image = false
 
 # Whether footnotes are rendered in the GitHub-style (at the bottom, with back references) or plain (in the place, where they are defined)
 bottom_footnotes = false
+
+# When set to "true", support for GitHub-style alerts, a.k.a. callouts or admonitions, is enabled in the Markdown parser.
+# For example, this Markdown syntax:
+#
+#     > [!NOTE]
+#     > alert note
+#
+# will result in the following generated HTML:
+#
+#     <blockquote class="markdown-alert-note">
+#     <p>alert note</p>
+#     </blockquote>
+#
+# where the CSS class name suffix may be `note`, `tip`, `important`, `warning`, or `caution`, depending on the alert type.
+# Visual appearance depends on theme-level support; refer to your theme's documentation for more information.
+github_alerts = true
+
+# This determines whether to insert a link for each header like the ones you can see on this site if you hover over
+# a header.
+# The default template can be overridden by creating an `anchor-link.html` file in the `templates` directory.
+# This value can be "left", "right", "heading" or "none".
+# "heading" means the full heading becomes the text of the anchor.
+# See "Internal links & deep linking" in the documentation for more information.
+insert_anchor_links = "heading"
+
+# Syntax highlighting configuration (optional)
+[markdown.highlighting]
+# When set to "true", missing highlight languages are treated as errors. Defaults to false but recommended to set to true.
+error_on_missing_language = true
+
+# Whether to use inline hex colours (`inline`) or CSS classes (`class`) 
+style = "inline"
+
+# Selecting a theme is always required: you have a choice between single (1) or dual themes (2).
+# Only outputting CSS classes like before 0.22 is not possible anymore.
+# 1. If you use a single theme, put its name here. See the syntax highlighting page for the possible choices.
+# theme = ""
+
+# 2. If you want light/dark themes, use the 2 fields below instead. See the syntax highlighting page for the possible choices.
+light_theme = "catppuccin-frappe"
+dark_theme = "catppuccin-macchiato"
+
+# A list of files for additional JSON TextMate grammars
+extra_grammars = []
+
+# A list of files for additional JSON TextMate themes
+# Get themes from https://textmate-grammars-themes.netlify.app/
+extra_themes = []
 
 # Configuration of the link checker.
 [link_checker]
@@ -163,11 +217,11 @@ include_content = true
 # become too big to load on the site. Defaults to not being set.
 # truncate_content_length = 100
 
-# Wether to produce the search index as a javascript file or as a JSON file
+# Whether to produce the search index as a javascript file or as a JSON file
 # Accepted values:
 # - "elasticlunr_javascript", "elasticlunr_json"
 # - "fuse_javascript", "fuse_json"
-index_format = "elasticlunr_javascript"
+index_format = "elasticlunr_json"
 
 # Optional translation object for the default language
 # Example:
@@ -179,7 +233,7 @@ index_format = "elasticlunr_javascript"
 [translations]
 
 # Additional languages definition
-# You can define language specific config values and translations: 
+# You can define language specific config values and translations:
 # title, description, generate_feeds, feed_filenames, taxonomies, build_search_index
 # as well as its own search configuration and translations (see above for details on those)
 [languages]

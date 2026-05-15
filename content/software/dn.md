@@ -4,7 +4,7 @@ description = """
 A note-taking, file-organisation, and personal knowledge management system
 utility for cross-platform terminal use.
 """
-date  = 2024-12-21
+date = 2024-12-21
 +++
 
 ## Overview
